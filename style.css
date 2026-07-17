@@ -3816,3 +3816,124 @@ body,
     padding: 54px 20px;
   }
 }
+
+/* =========================================================
+   V14 — mobile fixes: native blue controls, stable menu, devices side by side
+   ========================================================= */
+
+/* iOS/Messenger must not apply native blue styling to accordion buttons. */
+.scope-item__trigger,
+.scope-item__trigger:link,
+.scope-item__trigger:visited,
+.scope-item__trigger:hover,
+.scope-item__trigger:active,
+.scope-item__trigger:focus,
+.scope-item__main,
+.scope-item__main h3,
+.scope-item__eyebrow,
+.scope-item__number,
+.scope-item__meta,
+.scope-item__plus,
+.faq-item__trigger {
+  color: var(--brand-greige-ink) !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+.scope-item__trigger,
+.faq-item__trigger,
+.menu-toggle {
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 980px) {
+  /* Stable full-height mobile drawer. Everything remains inside the panel. */
+  .site-nav {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    width: min(88vw, 420px) !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    padding: calc(var(--header-h) + 36px) 32px 34px !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    z-index: 1150;
+    background: rgba(244,241,236,.985) !important;
+  }
+
+  .site-nav > a {
+    width: 100%;
+    padding: 13px 0;
+    font-size: 15px !important;
+    line-height: 1.2;
+  }
+
+  .site-nav__extras {
+    position: static !important;
+    margin: 18px 0 0 !important;
+    padding: 20px 0 0 !important;
+    width: 100% !important;
+    border-top: 1px solid rgba(63,59,55,.16) !important;
+    display: grid !important;
+    gap: 2px !important;
+  }
+
+  .site-nav__extras a {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    color: var(--brand-greige-ink) !important;
+    -webkit-text-fill-color: var(--brand-greige-ink) !important;
+  }
+
+  .menu-toggle {
+    position: relative;
+    z-index: 1205;
+  }
+}
+
+@media (max-width: 680px) {
+  /* Keep laptop and phone together instead of stacking vertically. */
+  .social-devices {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    min-height: clamp(310px, 72vw, 430px) !important;
+    margin-top: 22px !important;
+    overflow: visible !important;
+  }
+
+  .social-devices .device {
+    position: absolute !important;
+    top: auto !important;
+    margin: 0 !important;
+  }
+
+  .social-devices .device--laptop {
+    left: 0 !important;
+    right: auto !important;
+    bottom: 28px !important;
+    width: 86% !important;
+    height: auto !important;
+    aspect-ratio: 1.60 / 1 !important;
+  }
+
+  .social-devices .device--phone {
+    left: auto !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: min(31vw, 148px) !important;
+    height: auto !important;
+    aspect-ratio: 946 / 2047 !important;
+    z-index: 4 !important;
+  }
+
+  .scope-item__main h3 {
+    color: var(--brand-greige-ink) !important;
+    -webkit-text-fill-color: var(--brand-greige-ink) !important;
+  }
+}
