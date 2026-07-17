@@ -959,11 +959,20 @@ body.menu-open .menu-toggle span:nth-child(3) { top: 23px; transform: rotate(-45
 .about__content {
   position: relative;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  min-width: 0;
   padding: clamp(72px, 7vw, 126px) clamp(54px, 6.5vw, 126px);
   background:
     linear-gradient(90deg, rgba(65,57,51,.08) 1px, transparent 1px) 0 0 / 50% 100%,
     #ebe8e3;
+}
+
+
+.about__content > * {
+  width: 100%;
+  min-width: 0;
 }
 
 .about__content::after {
@@ -1000,7 +1009,9 @@ body.menu-open .menu-toggle span:nth-child(3) { top: 23px; transform: rotate(-45
 }
 
 .about__statement {
+  width: 100%;
   max-width: 760px;
+  overflow-wrap: normal;
   font-size: clamp(52px, 5.2vw, 92px);
   line-height: .82;
   letter-spacing: -.035em;
