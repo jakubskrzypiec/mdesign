@@ -120,3 +120,5 @@ if (aboutRotatingText) {
     }, 240);
   }, 2600);
 }
+
+// V11: page flow and social presentation rebuilt; interactions unchanged.

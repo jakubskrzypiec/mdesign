@@ -3321,3 +3321,223 @@ body,
 .manifest {
   margin-top: 0 !important;
 }
+
+
+/* =========================================================
+   V11 — reordered editorial flow + rebuilt social presentation
+   ========================================================= */
+
+/* New order begins immediately after the hero. */
+.scope { scroll-margin-top: var(--header-h); }
+.projects { scroll-margin-top: var(--header-h); }
+.about { scroll-margin-top: var(--header-h); }
+.contact { scroll-margin-top: var(--header-h); }
+
+/* The transition bands meet neighbouring sections with no accidental gaps. */
+.projects,
+.quote-band,
+.about,
+.social-faq,
+.manifest,
+.contact {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Socials and FAQ form one deliberate full-width editorial block. */
+.social-faq.section {
+  padding: 0 !important;
+  background: var(--brand-greige-paper);
+}
+
+.social-faq__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.52fr) minmax(470px, .86fr);
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  gap: 0;
+}
+
+.social-showcase,
+.faq {
+  min-height: 880px;
+  border-radius: 0 !important;
+}
+
+.social-showcase {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(54px, 5vw, 92px) clamp(34px, 5vw, 96px);
+  overflow: hidden;
+  background: var(--brand-greige-paper) !important;
+}
+
+.social-showcase::after {
+  content: none !important;
+}
+
+.social-showcase__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(230px, .52fr);
+  align-items: end;
+  gap: 40px;
+  margin-bottom: 34px;
+}
+
+.social-showcase__head h2 {
+  max-width: 760px;
+  font-size: clamp(48px, 4.5vw, 78px);
+}
+
+.social-showcase__head > p {
+  max-width: 390px;
+  padding-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.social-gallery {
+  display: grid;
+  grid-template-columns: minmax(0, 1.62fr) minmax(300px, .72fr);
+  flex: 1;
+  min-height: 610px;
+  gap: 18px;
+}
+
+.social-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: 52px minmax(0, 1fr);
+  min-width: 0;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(63,59,55,.16);
+  box-shadow: 0 24px 70px rgba(63,59,55,.10);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.social-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 32px 84px rgba(63,59,55,.16);
+}
+
+.social-card__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 0 18px;
+  color: var(--brand-greige-ink);
+  background: rgba(255,255,255,.98);
+  border-bottom: 1px solid rgba(63,59,55,.12);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.social-card__bar strong { font-weight: 700; }
+.social-card__bar em {
+  color: var(--brand-greige-muted);
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: .10em;
+}
+
+.social-card__image {
+  display: block;
+  min-height: 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+.social-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  image-rendering: auto;
+  filter: none !important;
+  transform: translateZ(0);
+}
+
+.social-card--instagram .social-card__image img {
+  object-position: 50% 0%;
+}
+
+.social-card--facebook .social-card__image img {
+  object-position: 50% 0%;
+}
+
+.faq {
+  min-width: 0;
+}
+
+.faq__content {
+  padding: clamp(54px, 4.2vw, 80px) clamp(30px, 3.7vw, 66px);
+}
+
+/* Keep the new section order compact and intentional. */
+.quote-band,
+.manifest {
+  min-height: clamp(390px, 47vw, 620px);
+}
+
+@media (max-width: 1280px) {
+  .social-faq__grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(420px, .9fr);
+  }
+  .social-gallery {
+    grid-template-columns: minmax(0, 1.45fr) minmax(270px, .72fr);
+  }
+}
+
+@media (max-width: 1050px) {
+  .social-faq__grid {
+    grid-template-columns: 1fr;
+  }
+  .social-showcase,
+  .faq {
+    min-height: auto;
+  }
+  .social-gallery {
+    min-height: 650px;
+  }
+  .faq {
+    min-height: 760px;
+  }
+}
+
+@media (max-width: 760px) {
+  .social-showcase {
+    padding: 58px 18px 24px;
+  }
+  .social-showcase__head {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .social-showcase__head h2 {
+    font-size: clamp(44px, 13vw, 62px);
+  }
+  .social-gallery {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .social-card--instagram {
+    min-height: 470px;
+  }
+  .social-card--facebook {
+    min-height: 680px;
+  }
+  .social-card__bar {
+    padding-inline: 14px;
+  }
+  .faq {
+    min-height: auto;
+  }
+  .faq__content {
+    padding: 58px 20px;
+  }
+}
