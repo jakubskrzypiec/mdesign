@@ -104,3 +104,19 @@ if (contactForm) {
     contactForm.reset();
   });
 }
+
+// V6 — subtle changing statement in the About section.
+const aboutRotatingText = document.getElementById('aboutRotatingText');
+if (aboutRotatingText) {
+  const phrases = ['uspokajają.', 'porządkują.', 'zostają.', 'działają.'];
+  let phraseIndex = 0;
+
+  window.setInterval(() => {
+    aboutRotatingText.classList.add('is-changing');
+    window.setTimeout(() => {
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      aboutRotatingText.textContent = phrases[phraseIndex];
+      aboutRotatingText.classList.remove('is-changing');
+    }, 240);
+  }, 2600);
+}
