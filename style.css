@@ -3541,3 +3541,278 @@ body,
     padding: 58px 20px;
   }
 }
+
+
+/* =========================================================
+   V12 — final social devices, closed scope, 50/50 FAQ and white footer
+   ========================================================= */
+
+/* Offer accordion starts fully closed. JS preserves this state. */
+.scope-item:not(.is-open) .scope-item__panel {
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Social media and FAQ meet exactly on the middle axis of the viewport. */
+.social-faq__grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  align-items: stretch;
+}
+
+.social-showcase,
+.faq {
+  min-height: clamp(760px, 82svh, 900px);
+}
+
+.social-showcase {
+  padding: clamp(48px, 4.2vw, 78px) clamp(30px, 4.3vw, 76px) 28px;
+}
+
+.social-showcase__head {
+  grid-template-columns: minmax(0, 1fr) minmax(210px, .48fr);
+  gap: clamp(24px, 3vw, 48px);
+  margin-bottom: 10px;
+}
+
+.social-showcase__head h2 {
+  font-size: clamp(44px, 4vw, 70px);
+}
+
+.social-devices {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  min-height: 560px;
+  margin-top: 10px;
+  overflow: visible;
+}
+
+.social-device-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.social-devices .device {
+  position: absolute;
+  overflow: visible;
+  background: #121212;
+  box-shadow: 0 30px 70px rgba(63,59,55,.20);
+}
+
+.social-devices .device__screen {
+  position: absolute;
+  overflow: hidden;
+  background: #fff;
+}
+
+.social-devices .device--laptop {
+  left: -2%;
+  bottom: 48px;
+  width: 88%;
+  height: auto;
+  aspect-ratio: 1.60 / 1;
+  padding: 0;
+  border-radius: 20px 20px 10px 10px;
+}
+
+.social-devices .device--laptop::after {
+  left: -4.5%;
+  right: -4.5%;
+  bottom: -20px;
+  height: 22px;
+  border-radius: 4px 4px 15px 15px;
+  background: #111;
+}
+
+.social-devices .device--laptop .device__screen {
+  inset: 8px 8px 10px;
+  border-radius: 13px 13px 5px 5px;
+}
+
+.social-devices .device--phone {
+  right: 0;
+  bottom: 10px;
+  width: min(29%, 238px);
+  height: auto;
+  aspect-ratio: 946 / 2047;
+  border: 5px solid #111;
+  border-radius: 34px;
+  z-index: 3;
+}
+
+.social-devices .device--phone::before {
+  top: 7px;
+  width: 38%;
+  height: 13px;
+  background: #111;
+}
+
+.social-devices .device--phone .device__screen {
+  inset: 7px;
+  border-radius: 25px;
+}
+
+.social-devices .social-screen {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
+  background: #fff;
+  filter: none !important;
+  image-rendering: auto;
+  transform: none !important;
+}
+
+.social-devices .device--laptop .social-screen {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.social-devices .device:hover {
+  transform: translateY(-4px);
+  transition: transform .3s ease;
+}
+
+/* FAQ occupies the entire right half and aligns with the social block. */
+.faq {
+  height: 100%;
+  min-width: 0;
+}
+
+.faq__content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: clamp(48px, 4.2vw, 76px) clamp(28px, 3.8vw, 68px);
+}
+
+.faq-list {
+  margin-top: clamp(24px, 3vw, 42px);
+}
+
+/* The footer is a separate white final strip, not another contact block. */
+.site-footer {
+  background: #fff !important;
+  color: var(--brand-greige-ink) !important;
+}
+
+.site-footer .footer__brand-block p,
+.site-footer .footer__column p,
+.site-footer .footer__column a,
+.site-footer .footer__bottom,
+.site-footer .footer__bottom a {
+  color: var(--brand-greige-muted) !important;
+}
+
+.site-footer .footer__label {
+  color: var(--brand-greige) !important;
+}
+
+.site-footer .footer__bottom {
+  border-top-color: rgba(63,59,55,.14) !important;
+}
+
+@media (max-width: 1180px) {
+  .social-showcase__head {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .social-showcase__head > p {
+    max-width: 620px;
+  }
+
+  .social-devices {
+    min-height: 520px;
+  }
+
+  .social-devices .device--laptop {
+    width: 92%;
+  }
+
+  .social-devices .device--phone {
+    width: min(31%, 220px);
+  }
+}
+
+@media (max-width: 1050px) {
+  .social-faq__grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .social-showcase,
+  .faq {
+    min-height: auto;
+  }
+
+  .social-showcase {
+    min-height: 760px;
+  }
+
+  .social-devices {
+    min-height: 560px;
+  }
+
+  .social-devices .device--laptop {
+    left: 0;
+    width: 86%;
+  }
+
+  .social-devices .device--phone {
+    right: 2%;
+    width: min(28%, 230px);
+  }
+
+  .faq {
+    min-height: 720px;
+  }
+}
+
+@media (max-width: 680px) {
+  .social-showcase {
+    min-height: auto;
+    padding: 54px 18px 38px;
+  }
+
+  .social-showcase__head h2 {
+    font-size: clamp(42px, 12vw, 58px);
+  }
+
+  .social-devices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 42px;
+    min-height: 0;
+    margin-top: 24px;
+    overflow: visible;
+  }
+
+  .social-devices .device {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+  }
+
+  .social-devices .device--laptop {
+    width: 100%;
+    aspect-ratio: 1.60 / 1;
+  }
+
+  .social-devices .device--phone {
+    width: min(74vw, 310px);
+    aspect-ratio: 946 / 2047;
+  }
+
+  .faq {
+    min-height: auto;
+  }
+
+  .faq__content {
+    padding: 54px 20px;
+  }
+}
