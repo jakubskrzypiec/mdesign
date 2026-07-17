@@ -1,5 +1,4 @@
 const body = document.body;
-const splash = document.getElementById('splash');
 const header = document.getElementById('siteHeader');
 const menuToggle = document.getElementById('menuToggle');
 const siteNav = document.getElementById('siteNav');
@@ -9,15 +8,6 @@ const scopeItems = document.querySelectorAll('[data-scope-item]');
 const faqItems = document.querySelectorAll('[data-faq-item]');
 const contactForm = document.getElementById('contactForm');
 const formNote = document.getElementById('formNote');
-
-function hideSplash() {
-  if (!splash) return;
-  splash.classList.add('is-hidden');
-}
-window.addEventListener('load', () => {
-  setTimeout(hideSplash, 1300);
-});
-setTimeout(hideSplash, 3200);
 
 function updateHeader() {
   header.classList.toggle('is-scrolled', window.scrollY > 24);
