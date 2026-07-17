@@ -2949,3 +2949,215 @@ body,
   .contact-form { padding: 28px 20px; }
   .scope-item__visual { opacity: .70; }
 }
+
+/* =========================================================
+   V9 — final light-grey pass, compact contact and readable socials
+   ========================================================= */
+:root {
+  --brand-gray: #7d8688;
+  --brand-gray-deep: #697275;
+  --brand-gray-light: #eef0ef;
+  --brand-gray-mid: #d9dddc;
+
+  --bg: var(--brand-gray-light);
+  --bg-soft: var(--brand-gray-light);
+  --surface: var(--brand-gray-light);
+  --surface-2: var(--brand-gray-mid);
+  --text: #303638;
+  --text-soft: #687174;
+  --accent: var(--brand-gray);
+  --dark: var(--brand-gray);
+  --neutral-100: var(--brand-gray-light);
+  --neutral-200: var(--brand-gray-mid);
+  --neutral-700: var(--brand-gray);
+}
+
+/* One lighter grey identity across all previously dark elements. */
+.site-header.is-scrolled,
+.contact,
+.site-footer,
+.quote-band,
+.scope-item__panel {
+  background-color: var(--brand-gray);
+}
+
+.site-header.is-scrolled {
+  background: rgba(125,134,136,.95);
+  box-shadow: 0 14px 38px rgba(42,49,51,.12);
+}
+
+.about__rotating,
+.about__eyebrow,
+.section-kicker,
+.scope-item__number,
+.scope-item__eyebrow,
+.scope-item__meta {
+  color: var(--brand-gray);
+}
+
+.quote-band__overlay { background: rgba(105,114,117,.50); }
+.manifest__overlay { background: linear-gradient(90deg, rgba(105,114,117,.74), rgba(105,114,117,.38)); }
+.faq__overlay { background: linear-gradient(180deg, rgba(105,114,117,.60), rgba(105,114,117,.76)); }
+
+.scope-item__visual::after {
+  background: linear-gradient(90deg,
+    rgba(238,240,239,.84) 0%,
+    rgba(238,240,239,.57) 31%,
+    rgba(238,240,239,.30) 61%,
+    rgba(238,240,239,.58) 100%);
+}
+
+/* Contact: still wide and centred, but much lower and tighter. */
+.contact {
+  padding: clamp(52px, 5vw, 76px) 0 clamp(58px, 5.5vw, 84px);
+}
+
+.contact__grid {
+  width: min(1360px, calc(100% - 64px));
+}
+
+.contact__content {
+  width: min(1040px, 100%);
+  margin-bottom: clamp(24px, 3vw, 38px);
+}
+
+.contact__content h2 {
+  font-size: clamp(42px, 4.3vw, 68px);
+  line-height: .94;
+}
+
+.contact__lead {
+  margin-top: 14px !important;
+}
+
+.contact__steps {
+  max-width: 930px;
+  margin-top: clamp(20px, 2.6vw, 32px);
+}
+
+.contact__step,
+.contact__step + .contact__step {
+  min-height: 76px;
+  padding: 13px 16px;
+}
+
+.contact__step p { margin-top: 10px; }
+.contact__info { margin-top: 18px; }
+
+.contact-form {
+  width: 100%;
+  padding: clamp(24px, 2.8vw, 38px) clamp(26px, 3.6vw, 52px);
+  border-color: rgba(255,255,255,.20);
+  background: rgba(255,255,255,.075);
+  box-shadow: 0 22px 60px rgba(50,58,60,.12);
+}
+
+.contact-form__head {
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+}
+
+.contact-form label {
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  min-height: 48px;
+  padding: 11px 14px;
+}
+
+.contact-form textarea {
+  min-height: 88px;
+  max-height: 120px;
+}
+
+.contact-form__footer {
+  margin-top: 2px;
+}
+
+.contact-form .button {
+  min-height: 46px;
+}
+
+/* Social mockups: larger devices and focused source crops make profile data legible. */
+.social-showcase {
+  background: var(--brand-gray-light);
+  padding: clamp(36px, 3.7vw, 64px);
+}
+
+.social-showcase h2 {
+  max-width: 760px;
+}
+
+.devices {
+  min-height: 620px;
+  margin-top: 22px;
+}
+
+.device--laptop {
+  left: -12px;
+  bottom: 26px;
+  width: min(800px, 94%);
+  height: 456px;
+}
+
+.device--phone {
+  right: -4px;
+  bottom: -8px;
+  width: 272px;
+  height: 566px;
+  border-width: 5px;
+}
+
+.device__screen {
+  inset: 9px;
+}
+
+.device--phone .device__screen {
+  inset: 10px;
+  border-radius: 28px;
+}
+
+.social-screen {
+  width: 100%;
+  height: 100%;
+  image-rendering: -webkit-optimize-contrast;
+  filter: contrast(1.13) saturate(.98);
+}
+
+.social-screen--desktop,
+.social-screen--mobile {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.device:hover .social-screen {
+  transform: scale(1.004) translateZ(0);
+}
+
+@media (max-width: 1180px) {
+  .devices { min-height: 580px; }
+  .device--laptop { width: min(720px, 94%); height: 410px; }
+  .device--phone { width: 238px; height: 495px; }
+}
+
+@media (max-width: 980px) {
+  .contact__grid { width: min(100% - 32px, 900px); }
+  .contact__content h2 { font-size: clamp(40px, 8vw, 62px); }
+  .devices { min-height: 600px; }
+  .device--laptop { width: min(760px, 94%); height: 430px; }
+  .device--phone { width: 250px; height: 520px; }
+}
+
+@media (max-width: 680px) {
+  .contact { padding: 52px 0 60px; }
+  .contact-form { padding: 22px 16px; }
+  .contact-form textarea { min-height: 104px; max-height: none; }
+  .devices { min-height: 470px; margin-top: 18px; }
+  .device--laptop { left: -8px; width: 100%; height: 258px; bottom: 74px; }
+  .device--phone { right: -4px; width: 146px; height: 304px; bottom: 2px; }
+  .device__screen { inset: 6px; }
+}
