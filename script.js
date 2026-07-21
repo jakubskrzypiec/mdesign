@@ -149,3 +149,173 @@ const updatePremiumScrollV17 = () => {
 };
 updatePremiumScrollV17();
 window.addEventListener('scroll', updatePremiumScrollV17, { passive: true });
+
+
+// ============================================================
+// V9 premium motion layer — interactions only, no content/layout changes
+// ============================================================
+(() => {
+  const root = document.documentElement;
+  const body = document.body;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  body.classList.add('motion-v9');
+  if (prefersReduced) {
+    body.classList.add('motion-v9-ready');
+    return;
+  }
+
+  // Entry sequence
+  requestAnimationFrame(() => {
+    body.classList.add('motion-v9-enter');
+    setTimeout(() => body.classList.add('motion-v9-ready'), 1050);
+  });
+
+  // Better stagger reveals for all key sections, even elements without .reveal
+  const revealItems = [
+    ...document.querySelectorAll('.reveal, .project-showcase, .scope-item, .about__media, .about__content, .contact__content, .contact-form, .faq-item, .contact__step')
+  ];
+
+  revealItems.forEach((el, index) => {
+    if (!el.dataset.motionDelay) {
+      el.style.setProperty('--motion-delay', `${Math.min((index % 8) * 70, 420)}ms`);
+    }
+    el.classList.add('motion-reveal-v9');
+  });
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible-v9');
+      revealObserver.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.14,
+    rootMargin: '0px 0px -8% 0px'
+  });
+
+  revealItems.forEach((el) => revealObserver.observe(el));
+
+  // Hero progress and soft parallax
+  const hero = document.querySelector('.hero');
+  let scrollTicking = false;
+
+  const updateScrollMotion = () => {
+    const y = window.scrollY || 0;
+    const vh = Math.max(window.innerHeight, 1);
+    root.style.setProperty('--v9-scroll', Math.min(y / vh, 1).toFixed(4));
+    if (hero) {
+      hero.style.setProperty('--hero-y', `${Math.min(y * 0.16, 140).toFixed(1)}px`);
+      hero.style.setProperty('--hero-scale', `${1 + Math.min(y / 9000, 0.035)}`);
+    }
+    scrollTicking = false;
+  };
+
+  const onScroll = () => {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(updateScrollMotion);
+  };
+
+  updateScrollMotion();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Magnetic / reactive buttons
+  const magnetic = document.querySelectorAll('.button, .hero-link, .header-cta, .social-links a, .menu-toggle, .scope-item__plus, .faq-item__icon');
+
+  magnetic.forEach((el) => {
+    el.classList.add('magnetic-v9');
+
+    el.addEventListener('pointermove', (event) => {
+      const rect = el.getBoundingClientRect();
+      const mx = (event.clientX - rect.left) / rect.width - 0.5;
+      const my = (event.clientY - rect.top) / rect.height - 0.5;
+      el.style.setProperty('--mag-x', `${mx * 10}px`);
+      el.style.setProperty('--mag-y', `${my * 8}px`);
+      el.style.setProperty('--mag-rx', `${my * -2.4}deg`);
+      el.style.setProperty('--mag-ry', `${mx * 3.2}deg`);
+      el.classList.add('is-magnetic');
+    }, { passive: true });
+
+    el.addEventListener('pointerleave', () => {
+      el.classList.remove('is-magnetic');
+      el.style.setProperty('--mag-x', '0px');
+      el.style.setProperty('--mag-y', '0px');
+      el.style.setProperty('--mag-rx', '0deg');
+      el.style.setProperty('--mag-ry', '0deg');
+    }, { passive: true });
+  });
+
+  // Premium tilt / light tracking on large cards
+  const reactiveCards = document.querySelectorAll('.project-showcase, .scope-item, .social-showcase, .faq, .contact-form, .about__media');
+
+  reactiveCards.forEach((card) => {
+    card.classList.add('reactive-card-v9');
+
+    card.addEventListener('pointermove', (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+      card.style.setProperty('--rx', `${(0.5 - y) * 2.2}deg`);
+      card.style.setProperty('--ry', `${(x - 0.5) * 2.8}deg`);
+      card.style.setProperty('--spot-x', `${x * 100}%`);
+      card.style.setProperty('--spot-y', `${y * 100}%`);
+      card.classList.add('is-reactive');
+    }, { passive: true });
+
+    card.addEventListener('pointerleave', () => {
+      card.classList.remove('is-reactive');
+      card.style.setProperty('--rx', '0deg');
+      card.style.setProperty('--ry', '0deg');
+      card.style.setProperty('--spot-x', '50%');
+      card.style.setProperty('--spot-y', '50%');
+    }, { passive: true });
+  });
+
+  // Smooth image parallax inside project cards
+  const projectCards = [...document.querySelectorAll('.project-showcase')];
+
+  const updateProjectDepth = () => {
+    const vh = window.innerHeight || 1;
+    projectCards.forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      const center = rect.top + rect.height / 2;
+      const progress = (center - vh / 2) / vh;
+      card.style.setProperty('--depth-y', `${Math.max(-1, Math.min(1, progress)) * -24}px`);
+    });
+  };
+
+  updateProjectDepth();
+  window.addEventListener('scroll', () => requestAnimationFrame(updateProjectDepth), { passive: true });
+
+  // Character split for selected huge headings — subtle, not destructive
+  const splitTargets = document.querySelectorAll('.projects__intro h2, .scope__heading h2, .contact__content h2, .manifest__content h2');
+  splitTargets.forEach((heading) => {
+    if (heading.dataset.splitV9) return;
+    heading.dataset.splitV9 = 'true';
+    const text = heading.textContent.trim();
+    heading.setAttribute('aria-label', text);
+    heading.innerHTML = text.split(' ').map((word, wi) => (
+      `<span class="word-v9" style="--word-delay:${wi * 55}ms">${word}</span>`
+    )).join(' ');
+  });
+
+  // Watch split headings after rewrite
+  const wordHeadings = document.querySelectorAll('[data-split-v9="true"]');
+  const wordObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('words-in-v9');
+      wordObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.22 });
+  wordHeadings.forEach((h) => wordObserver.observe(h));
+
+  // Soft loading state when navigating same-page anchors
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      body.classList.add('motion-v9-anchor');
+      setTimeout(() => body.classList.remove('motion-v9-anchor'), 620);
+    });
+  });
+})();

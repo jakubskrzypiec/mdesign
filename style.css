@@ -1327,3 +1327,428 @@ body{
     padding:42px 0!important;
   }
 }
+
+
+/* ============================================================
+   V9 — PREMIUM MOTION LAYER
+   Animacje/interakcje bez przebudowy contentu i układu.
+   ============================================================ */
+
+.motion-v9{
+  --v9-scroll:0;
+  --hero-y:0px;
+  --hero-scale:1;
+}
+
+/* page entrance */
+.motion-v9::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:5000;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.12), transparent 28%),
+    linear-gradient(180deg, #CDCCCA, #F1F0ED);
+  opacity:1;
+  transform:scale(1);
+  transition:
+    opacity .9s cubic-bezier(.16,.84,.22,1),
+    transform .9s cubic-bezier(.16,.84,.22,1),
+    visibility .9s ease;
+}
+
+.motion-v9.motion-v9-ready::before{
+  opacity:0;
+  transform:scale(1.035);
+  visibility:hidden;
+}
+
+/* hero entrance and living image */
+.motion-v9 .hero{
+  overflow:hidden;
+}
+
+.motion-v9 .hero::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:1px;
+  z-index:3;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.46), transparent);
+  transform:scaleX(0);
+  transform-origin:center;
+  transition:transform 1.15s cubic-bezier(.16,.84,.22,1) .36s;
+}
+
+.motion-v9.motion-v9-enter .hero::after{
+  transform:scaleX(1);
+}
+
+.motion-v9 .hero__slide{
+  transform:translate3d(0, var(--hero-y), 0) scale(calc(var(--hero-scale) * 1.055))!important;
+  filter:blur(12px) brightness(.86) saturate(.86);
+  clip-path:inset(8% round 0);
+  transition:
+    clip-path 1.35s cubic-bezier(.16,.84,.22,1),
+    filter 1.25s cubic-bezier(.16,.84,.22,1),
+    transform .18s linear;
+  will-change:transform, filter, clip-path;
+}
+
+.motion-v9.motion-v9-enter .hero__slide{
+  filter:blur(0) brightness(.94) saturate(.94);
+  clip-path:inset(0% round 0);
+}
+
+.motion-v9 .hero__overlay{
+  opacity:0;
+  transition:opacity 1s ease .36s;
+}
+
+.motion-v9.motion-v9-enter .hero__overlay{
+  opacity:1;
+}
+
+.motion-v9 .hero__bottom{
+  opacity:0;
+  transform:translateY(26px);
+  filter:blur(8px);
+  transition:
+    opacity .85s cubic-bezier(.16,.84,.22,1) .62s,
+    transform .85s cubic-bezier(.16,.84,.22,1) .62s,
+    filter .85s cubic-bezier(.16,.84,.22,1) .62s;
+}
+
+.motion-v9.motion-v9-enter .hero__bottom{
+  opacity:1;
+  transform:none;
+  filter:blur(0);
+}
+
+/* global reveal: richer than the old plain fade */
+.motion-reveal-v9{
+  opacity:0;
+  transform:translate3d(0,36px,0) scale(.985);
+  filter:blur(10px);
+  transition:
+    opacity .95s cubic-bezier(.16,.84,.22,1) var(--motion-delay,0ms),
+    transform .95s cubic-bezier(.16,.84,.22,1) var(--motion-delay,0ms),
+    filter .95s cubic-bezier(.16,.84,.22,1) var(--motion-delay,0ms);
+  will-change:opacity, transform, filter;
+}
+
+.motion-reveal-v9.is-visible-v9,
+.motion-reveal-v9.is-visible{
+  opacity:1!important;
+  transform:none!important;
+  filter:blur(0)!important;
+}
+
+/* Word-by-word premium headings */
+.word-v9{
+  display:inline-block;
+  opacity:0;
+  transform:translateY(.42em) rotateX(22deg);
+  transform-origin:left bottom;
+  filter:blur(8px);
+  transition:
+    opacity .85s cubic-bezier(.16,.84,.22,1) var(--word-delay,0ms),
+    transform .85s cubic-bezier(.16,.84,.22,1) var(--word-delay,0ms),
+    filter .85s cubic-bezier(.16,.84,.22,1) var(--word-delay,0ms);
+}
+
+.words-in-v9 .word-v9{
+  opacity:1;
+  transform:none;
+  filter:blur(0);
+}
+
+/* Magnetic buttons/links */
+.magnetic-v9{
+  transform:
+    translate3d(var(--mag-x,0), var(--mag-y,0), 0)
+    rotateX(var(--mag-rx,0deg))
+    rotateY(var(--mag-ry,0deg));
+  transition:
+    transform .42s cubic-bezier(.16,.84,.22,1),
+    background .28s ease,
+    border-color .28s ease,
+    color .28s ease,
+    opacity .28s ease;
+  will-change:transform;
+}
+
+.magnetic-v9.is-magnetic{
+  transition:
+    transform .08s linear,
+    background .28s ease,
+    border-color .28s ease,
+    color .28s ease,
+    opacity .28s ease;
+}
+
+/* Premium link underline movement */
+.hero-link,
+.site-nav a,
+.contact__info a,
+.footer__column a{
+  isolation:isolate;
+}
+
+.hero-link::after,
+.contact__info a::after,
+.footer__column a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  width:100%;
+  height:1px;
+  background:currentColor;
+  transform:scaleX(0);
+  transform-origin:right;
+  opacity:.55;
+  transition:transform .42s cubic-bezier(.16,.84,.22,1);
+}
+
+.hero-link:hover::after,
+.contact__info a:hover::after,
+.footer__column a:hover::after{
+  transform:scaleX(1);
+  transform-origin:left;
+}
+
+/* Reactive light on cards */
+.reactive-card-v9{
+  position:relative;
+  transform-style:preserve-3d;
+  transform:
+    perspective(1200px)
+    rotateX(var(--rx,0deg))
+    rotateY(var(--ry,0deg));
+  transition:
+    transform .5s cubic-bezier(.16,.84,.22,1),
+    box-shadow .45s ease,
+    border-color .35s ease;
+  will-change:transform;
+}
+
+.reactive-card-v9::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:5;
+  pointer-events:none;
+  border-radius:inherit;
+  background:
+    radial-gradient(circle at var(--spot-x,50%) var(--spot-y,50%), rgba(255,255,255,.16), transparent 28%);
+  opacity:0;
+  transition:opacity .35s ease;
+  mix-blend-mode:screen;
+}
+
+.reactive-card-v9.is-reactive::after{
+  opacity:1;
+}
+
+/* Project image depth and polish */
+.motion-v9 .project-showcase::before{
+  transform:translate3d(0, var(--depth-y,0px), 0) scale(1.045)!important;
+  transition:
+    transform .2s linear,
+    filter .45s ease!important;
+  will-change:transform;
+}
+
+.motion-v9 .project-showcase:hover::before{
+  filter:saturate(1.02) brightness(.99) contrast(1.04)!important;
+}
+
+.motion-v9 .project-showcase__content h3,
+.motion-v9 .project-showcase__content p,
+.motion-v9 .project-showcase__index{
+  transform:translateY(0);
+  transition:
+    transform .55s cubic-bezier(.16,.84,.22,1),
+    opacity .35s ease;
+}
+
+.motion-v9 .project-showcase:hover .project-showcase__content h3{
+  transform:translateY(-6px);
+}
+
+.motion-v9 .project-showcase:hover .project-showcase__content p{
+  transform:translateY(-3px);
+}
+
+/* Scope strips: premium opening and hover depth */
+.motion-v9 .scope-item{
+  isolation:isolate;
+}
+
+.motion-v9 .scope-item::before{
+  transition:
+    transform .95s cubic-bezier(.16,.84,.22,1),
+    opacity .45s ease,
+    filter .45s ease!important;
+}
+
+.motion-v9 .scope-item:hover::before{
+  transform:scale(1.085)!important;
+}
+
+.motion-v9 .scope-item__plus,
+.motion-v9 .faq-item__icon{
+  transition:
+    transform .38s cubic-bezier(.16,.84,.22,1),
+    background .28s ease,
+    border-color .28s ease,
+    box-shadow .28s ease!important;
+}
+
+.motion-v9 .scope-item:hover .scope-item__plus,
+.motion-v9 .faq-item:hover .faq-item__icon{
+  box-shadow:0 12px 30px rgba(80,81,83,.12);
+}
+
+/* FAQ: smoother interaction */
+.motion-v9 .faq-item{
+  transition:
+    background .32s ease,
+    padding-left .32s cubic-bezier(.16,.84,.22,1);
+}
+
+.motion-v9 .faq-item:hover{
+  background:rgba(255,255,255,.20);
+  padding-left:10px;
+}
+
+.motion-v9 .faq-item__trigger span:first-child,
+.motion-v9 .faq-item__trigger{
+  transition:color .3s ease, transform .35s cubic-bezier(.16,.84,.22,1);
+}
+
+.motion-v9 .faq-item:hover .faq-item__trigger{
+  transform:translateX(4px);
+}
+
+/* Form micro-interactions */
+.motion-v9 .contact-form input,
+.motion-v9 .contact-form select,
+.motion-v9 .contact-form textarea{
+  transition:
+    border-color .28s ease,
+    background .28s ease,
+    box-shadow .28s ease,
+    transform .28s cubic-bezier(.16,.84,.22,1);
+}
+
+.motion-v9 .contact-form input:focus,
+.motion-v9 .contact-form select:focus,
+.motion-v9 .contact-form textarea:focus{
+  border-color:rgba(115,117,120,.50)!important;
+  background:rgba(255,255,255,.72)!important;
+  box-shadow:0 12px 32px rgba(80,81,83,.08);
+  transform:translateY(-1px);
+}
+
+/* Header entrance */
+.motion-v9 .site-header{
+  transform:translateY(-100%);
+  transition:
+    transform .8s cubic-bezier(.16,.84,.22,1) .28s,
+    background .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease,
+    backdrop-filter .35s ease;
+}
+
+.motion-v9.motion-v9-enter .site-header{
+  transform:none;
+}
+
+/* Subtle scroll-responsive header line */
+.motion-v9 .site-header::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:calc(var(--v9-scroll) * 100%);
+  height:1px;
+  background:rgba(115,117,120,.36);
+  transform-origin:left;
+}
+
+/* Anchor feedback */
+.motion-v9.motion-v9-anchor main{
+  animation:anchorPulseV9 .62s cubic-bezier(.16,.84,.22,1);
+}
+
+@keyframes anchorPulseV9{
+  0%{filter:none;}
+  45%{filter:brightness(1.025);}
+  100%{filter:none;}
+}
+
+/* A premium, tiny shimmer only on real CTA buttons */
+.motion-v9 .button,
+.motion-v9 .hero-link{
+  overflow:hidden;
+}
+
+.motion-v9 .button::before{
+  content:"";
+  position:absolute;
+  inset:-40% auto -40% -70%;
+  width:45%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.42), transparent);
+  transform:skewX(-18deg);
+  opacity:0;
+}
+
+.motion-v9 .button:hover::before{
+  animation:ctaShimmerV9 .82s cubic-bezier(.16,.84,.22,1);
+}
+
+@keyframes ctaShimmerV9{
+  0%{left:-70%;opacity:0;}
+  20%{opacity:1;}
+  100%{left:125%;opacity:0;}
+}
+
+/* Gentle image polish */
+.motion-v9 img{
+  transition:
+    transform .65s cubic-bezier(.16,.84,.22,1),
+    filter .45s ease;
+}
+
+.motion-v9 .device__screen:hover img,
+.motion-v9 .about__media:hover img{
+  transform:scale(1.025);
+}
+
+/* reduced motion */
+@media(prefers-reduced-motion:reduce){
+  .motion-v9::before,
+  .motion-v9 .hero__slide,
+  .motion-v9 .site-header,
+  .motion-reveal-v9,
+  .word-v9,
+  .magnetic-v9,
+  .reactive-card-v9,
+  .motion-v9 img,
+  .motion-v9 *{
+    animation:none!important;
+    transition:none!important;
+    transform:none!important;
+    filter:none!important;
+    clip-path:none!important;
+  }
+  .motion-v9::before{
+    display:none!important;
+  }
+}
