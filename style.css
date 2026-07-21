@@ -2027,3 +2027,181 @@ body.intro-v11-active{
     filter:saturate(.92) contrast(1.04) brightness(.94)!important;
   }
 }
+
+
+/* ============================================================
+   V14 — SCOPE NO FOG FIX
+   Zakres współpracy: zero mgły, zero shine, zero przygaszania.
+   ============================================================ */
+
+.scope,
+.scope-v7{
+  background:#CDCCCA!important;
+}
+
+.scope__heading,
+.scope__heading.reveal,
+.scope__heading.motion-reveal-v9{
+  opacity:1!important;
+  filter:none!important;
+}
+
+.scope-item,
+.scope-item.reveal,
+.scope-item.motion-reveal-v9,
+.scope-item.motion-reveal-v9.is-visible-v9,
+.scope-item.reactive-card-v9{
+  opacity:1!important;
+  filter:none!important;
+  transform:none!important;
+  background:#F1F0ED!important;
+  border:1px solid rgba(80,81,83,.16)!important;
+  box-shadow:0 18px 55px rgba(80,81,83,.08)!important;
+}
+
+/* Wywalamy mgłę kompletnie */
+.scope-item::before,
+.scope-item::after,
+.scope-item:hover::after,
+.scope-item.is-open::after,
+.scope-item.reactive-card-v9::after,
+.scope-item.reactive-card-v9.is-reactive::after{
+  display:none!important;
+  opacity:0!important;
+  content:none!important;
+  background:none!important;
+}
+
+/* Zostaje tylko małe zdjęcie/pasek w środku, żeby nie było pustki */
+.scope-item__visual{
+  display:block!important;
+  height:100%!important;
+  min-height:150px!important;
+  border-radius:20px!important;
+  overflow:hidden!important;
+  background:#DAD9D6!important;
+}
+
+.scope-item__visual-inner{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  background-image:var(--scope-image)!important;
+  background-size:cover!important;
+  background-position:center!important;
+  filter:grayscale(1) saturate(.15) brightness(.88) contrast(1.05)!important;
+  opacity:.65!important;
+  transform:scale(1.03)!important;
+  transition:transform .6s cubic-bezier(.16,.84,.22,1)!important;
+}
+
+.scope-item:hover .scope-item__visual-inner{
+  transform:scale(1.07)!important;
+}
+
+.scope-item__trigger{
+  position:relative!important;
+  z-index:2!important;
+  display:grid!important;
+  grid-template-columns:54px minmax(280px,38%) minmax(0,1fr) minmax(190px,260px) 46px!important;
+  gap:26px!important;
+  align-items:center!important;
+  min-height:170px!important;
+  padding:24px 32px!important;
+  background:transparent!important;
+  opacity:1!important;
+  filter:none!important;
+}
+
+.scope-item__main,
+.scope-item__main h3,
+.scope-item__eyebrow,
+.scope-item__meta,
+.scope-item__number,
+.scope-item__content,
+.scope-item__content p,
+.scope-item__content li{
+  opacity:1!important;
+  filter:none!important;
+  color:#424446!important;
+  text-shadow:none!important;
+  mix-blend-mode:normal!important;
+}
+
+.scope-item__main h3{
+  font-size:clamp(32px,3.6vw,58px)!important;
+  line-height:1.02!important;
+}
+
+.scope-item__eyebrow,
+.scope-item__meta,
+.scope-item__number{
+  color:#737578!important;
+}
+
+.scope-item__panel,
+.scope-item.is-open .scope-item__panel{
+  position:relative!important;
+  z-index:2!important;
+  background:#F1F0ED!important;
+  border-top:1px solid rgba(80,81,83,.14)!important;
+  opacity:1!important;
+  filter:none!important;
+}
+
+.scope-item__content{
+  padding:22px 32px 30px 112px!important;
+  max-width:900px!important;
+}
+
+.scope-item__content p,
+.scope-item__content li{
+  color:#505153!important;
+  font-weight:500!important;
+}
+
+.scope-item__plus,
+.scope-item:hover .scope-item__plus,
+.scope-item.is-open .scope-item__plus{
+  opacity:1!important;
+  filter:none!important;
+  background:#FFFFFF!important;
+  color:#424446!important;
+  border:1px solid rgba(80,81,83,.18)!important;
+  box-shadow:none!important;
+}
+
+.scope-item.is-open .scope-item__plus{
+  transform:rotate(45deg)!important;
+}
+
+@media(max-width:1180px){
+  .scope-item__trigger{
+    grid-template-columns:44px minmax(240px,38%) minmax(0,1fr) 42px!important;
+  }
+  .scope-item__meta{
+    display:none!important;
+  }
+}
+
+@media(max-width:760px){
+  .scope-item__trigger{
+    grid-template-columns:38px minmax(0,1fr) 38px!important;
+    gap:14px!important;
+    padding:20px 18px!important;
+  }
+  .scope-item__visual{
+    grid-column:1 / -1!important;
+    order:-1!important;
+    min-height:170px!important;
+  }
+  .scope-item__main{
+    grid-column:2 / 3!important;
+  }
+  .scope-item__plus{
+    grid-column:3 / 4!important;
+  }
+  .scope-item__content{
+    padding:18px 18px 24px!important;
+  }
+}
