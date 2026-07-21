@@ -319,3 +319,35 @@ window.addEventListener('scroll', updatePremiumScrollV17, { passive: true });
     });
   });
 })();
+
+// V16 — mobile scope readability hard-fix
+(() => {
+  const scopeItemsMobileFix = [...document.querySelectorAll('.scope-item')];
+  if (!scopeItemsMobileFix.length) return;
+
+  const applyScopeMobileFix = () => {
+    if (window.innerWidth > 760) return;
+    scopeItemsMobileFix.forEach((item) => {
+      item.classList.remove('reveal', 'motion-reveal-v9', 'is-reactive');
+      item.classList.add('is-visible', 'is-visible-v9');
+      item.style.opacity = '1';
+      item.style.filter = 'none';
+      item.style.transform = 'none';
+
+      item.querySelectorAll('.scope-item__trigger, .scope-item__panel, .scope-item__main, .scope-item__main h3, .scope-item__eyebrow, .scope-item__meta, .scope-item__number, .scope-item__content, .scope-item__content p, .scope-item__content li, .scope-item__plus').forEach((el) => {
+        el.style.opacity = '1';
+        el.style.filter = 'none';
+        el.style.transform = 'none';
+      });
+    });
+  };
+
+  applyScopeMobileFix();
+  window.addEventListener('resize', applyScopeMobileFix, { passive: true });
+  window.addEventListener('load', applyScopeMobileFix);
+  document.addEventListener('click', (event) => {
+    const trigger = event.target.closest('.scope-item__trigger');
+    if (!trigger) return;
+    setTimeout(applyScopeMobileFix, 20);
+  });
+})();

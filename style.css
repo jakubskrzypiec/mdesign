@@ -2365,3 +2365,139 @@ body.intro-v11-active{
     padding:18px 18px 22px 52px!important;
   }
 }
+
+/* ============================================================
+   V16 — MOBILE SCOPE EMERGENCY FIX
+   Telefon: zakres współpracy ma być w 100% czytelny, bez szarej mgły.
+   ============================================================ */
+
+.scope-item,
+.scope-item *,
+.scope__heading,
+.scope__heading *{
+  -webkit-text-fill-color: currentColor;
+}
+
+@media(max-width:760px){
+  .scope,
+  .scope-v7,
+  .scope-list,
+  .scope-item,
+  .scope-item.reveal,
+  .scope-item.motion-reveal-v9,
+  .scope-item.motion-reveal-v9.is-visible-v9,
+  .scope-item.reactive-card-v9,
+  .scope-item.is-open{
+    opacity:1!important;
+    filter:none!important;
+    transform:none!important;
+    background:#F1F0ED!important;
+    box-shadow:0 14px 34px rgba(80,81,83,.08)!important;
+  }
+
+  .scope-item::after,
+  .scope-item:hover::after,
+  .scope-item.is-open::after,
+  .scope-item.reactive-card-v9::after,
+  .scope-item.reactive-card-v9.is-reactive::after{
+    display:none!important;
+    content:none!important;
+    opacity:0!important;
+    background:none!important;
+  }
+
+  .scope-item::before,
+  .scope-item:hover::before,
+  .scope-item.is-open::before{
+    content:""!important;
+    display:block!important;
+    position:absolute!important;
+    inset:0!important;
+    background-image:var(--scope-image)!important;
+    background-size:cover!important;
+    background-position:center center!important;
+    opacity:.16!important;
+    filter:grayscale(1) saturate(.12) brightness(.96) contrast(1.02)!important;
+    transform:scale(1.02)!important;
+    pointer-events:none!important;
+  }
+
+  .scope-item__visual,
+  .scope-item__visual-inner{
+    display:none!important;
+  }
+
+  .scope-item__trigger,
+  .scope-item:hover .scope-item__trigger,
+  .scope-item.is-open .scope-item__trigger{
+    position:relative!important;
+    z-index:2!important;
+    display:grid!important;
+    grid-template-columns:34px minmax(0,1fr) 36px!important;
+    gap:14px!important;
+    align-items:center!important;
+    min-height:152px!important;
+    padding:20px 18px!important;
+    background:transparent!important;
+    opacity:1!important;
+    filter:none!important;
+  }
+
+  .scope-item__main,
+  .scope-item__main h3,
+  .scope-item__eyebrow,
+  .scope-item__meta,
+  .scope-item__number,
+  .scope-item__content,
+  .scope-item__content p,
+  .scope-item__content li,
+  .scope-item__plus,
+  .scope-item__panel{
+    opacity:1!important;
+    filter:none!important;
+    text-shadow:none!important;
+    mix-blend-mode:normal!important;
+  }
+
+  .scope-item__number,
+  .scope-item__eyebrow,
+  .scope-item__meta{
+    color:#66686B!important;
+  }
+
+  .scope-item__main h3,
+  .scope-item__content p,
+  .scope-item__content li,
+  .scope-item__plus{
+    color:#424446!important;
+  }
+
+  .scope-item__main{
+    grid-column:2 / 3!important;
+  }
+
+  .scope-item__meta{
+    display:none!important;
+  }
+
+  .scope-item__plus{
+    grid-column:3 / 4!important;
+    width:36px!important;
+    height:36px!important;
+    background:rgba(255,255,255,.92)!important;
+    border:1px solid rgba(80,81,83,.16)!important;
+  }
+
+  .scope-item__panel,
+  .scope-item.is-open .scope-item__panel{
+    position:relative!important;
+    z-index:2!important;
+    background:rgba(241,240,237,.96)!important;
+    border-top:1px solid rgba(80,81,83,.12)!important;
+  }
+
+  .scope-item__content{
+    padding:18px 18px 24px 52px!important;
+    max-width:none!important;
+  }
+}
