@@ -319,29 +319,3 @@ window.addEventListener('scroll', updatePremiumScrollV17, { passive: true });
     });
   });
 })();
-
-
-// ============================================================
-// V11 intro + scope readability lock
-// ============================================================
-(() => {
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isHome = document.querySelector('.hero') && !document.body.classList.contains('subpage');
-
-  document.querySelectorAll('.scope-item').forEach((item) => {
-    const lockReadable = () => {
-      if (item.classList.contains('is-open')) {
-        item.classList.add('scope-readable-v11');
-      } else {
-        item.classList.remove('scope-readable-v11');
-      }
-    };
-
-    lockReadable();
-    item.querySelector('.scope-item__trigger')?.addEventListener('click', () => {
-      requestAnimationFrame(lockReadable);
-      setTimeout(lockReadable, 80);
-    });
-  });
-  // V12: intro removed by request — page loads directly into hero.
-})();
