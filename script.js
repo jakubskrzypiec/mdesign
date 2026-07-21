@@ -122,3 +122,30 @@ if (aboutRotatingText) {
 }
 
 // V12: scope starts closed; social devices and responsive layout refined.
+
+
+// V17 premium motion refinements
+const motionCardsV17 = document.querySelectorAll('.project-showcase, .scope-item');
+if (motionCardsV17.length) {
+  motionCardsV17.forEach((card) => {
+    card.addEventListener('pointermove', (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width - 0.5).toFixed(3);
+      const y = ((event.clientY - rect.top) / rect.height - 0.5).toFixed(3);
+      card.style.setProperty('--mx', x);
+      card.style.setProperty('--my', y);
+    }, { passive: true });
+
+    card.addEventListener('pointerleave', () => {
+      card.style.setProperty('--mx', 0);
+      card.style.setProperty('--my', 0);
+    }, { passive: true });
+  });
+}
+
+const updatePremiumScrollV17 = () => {
+  const y = window.scrollY || 0;
+  document.documentElement.style.setProperty('--scroll-soft', Math.min(y / 900, 1).toFixed(3));
+};
+updatePremiumScrollV17();
+window.addEventListener('scroll', updatePremiumScrollV17, { passive: true });
