@@ -319,3 +319,57 @@ window.addEventListener('scroll', updatePremiumScrollV17, { passive: true });
     });
   });
 })();
+
+
+// ============================================================
+// V11 intro + scope readability lock
+// ============================================================
+(() => {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isHome = document.querySelector('.hero') && !document.body.classList.contains('subpage');
+
+  document.querySelectorAll('.scope-item').forEach((item) => {
+    const lockReadable = () => {
+      if (item.classList.contains('is-open')) {
+        item.classList.add('scope-readable-v11');
+      } else {
+        item.classList.remove('scope-readable-v11');
+      }
+    };
+
+    lockReadable();
+    item.querySelector('.scope-item__trigger')?.addEventListener('click', () => {
+      requestAnimationFrame(lockReadable);
+      setTimeout(lockReadable, 80);
+    });
+  });
+
+  if (prefersReduced || !isHome || document.querySelector('.intro-v11')) return;
+
+  const intro = document.createElement('div');
+  intro.className = 'intro-v11';
+  intro.innerHTML = `
+    <div class="intro-v11__photo" aria-hidden="true"></div>
+    <div class="intro-v11__veil" aria-hidden="true"></div>
+    <div class="intro-v11__line" aria-hidden="true"></div>
+    <div class="intro-v11__content">
+      <img src="logo-dark.png" alt="Maciejewska Design" class="intro-v11__logo">
+      <span>Projektowanie wnętrz</span>
+    </div>
+  `;
+
+  document.body.classList.add('intro-v11-active');
+  document.body.prepend(intro);
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => intro.classList.add('is-ready'));
+  });
+
+  window.setTimeout(() => intro.classList.add('is-clear'), 1150);
+  window.setTimeout(() => intro.classList.add('is-leaving'), 2080);
+  window.setTimeout(() => {
+    intro.remove();
+    document.body.classList.remove('intro-v11-active');
+    document.body.classList.add('intro-v11-finished');
+  }, 2720);
+})();
