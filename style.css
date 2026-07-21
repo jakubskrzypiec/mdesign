@@ -2088,3 +2088,142 @@ body.intro-v11-active{
     letter-spacing:.26em;
   }
 }
+
+
+/* ============================================================
+   V12 — FINAL CLEAN FIX
+   - intro removed
+   - no dim/shine animation on Zakres współpracy
+   - image movement stays
+   ============================================================ */
+
+/* Intro completely disabled visually even if browser has old JS cached for a moment. */
+.intro-v11{
+  display:none!important;
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+body.intro-v11-active{
+  overflow:auto!important;
+}
+
+/* Zakres współpracy: bez przyciemniania / rozjaśniania przy hover/open. */
+.scope-item,
+.scope-item:hover,
+.scope-item.is-open,
+.scope-item.scope-readable-v11,
+.scope-item.scope-readable-v11:hover{
+  background:#CDCCCA!important;
+}
+
+.scope-item::before,
+.scope-item:hover::before,
+.scope-item.is-open::before,
+.scope-item.scope-readable-v11::before,
+.scope-item.scope-readable-v11:hover::before{
+  opacity:.32!important;
+  filter:grayscale(1) saturate(.14) brightness(.86) contrast(1.08)!important;
+}
+
+/* Zostawiamy tylko ruch zdjęcia w tle. */
+.scope-item:hover::before,
+.scope-item.is-open:hover::before{
+  transform:scale(1.075)!important;
+}
+
+.scope-item::after,
+.scope-item:hover::after,
+.scope-item.is-open::after,
+.scope-item.scope-readable-v11::after,
+.scope-item.scope-readable-v11:hover::after{
+  background:
+    linear-gradient(90deg,
+      rgba(205,204,202,.97) 0%,
+      rgba(205,204,202,.94) 48%,
+      rgba(205,204,202,.90) 100%
+    )!important;
+}
+
+/* Usunięcie reaktywnego shine/light z zakresu. */
+.scope-item.reactive-card-v9::after,
+.scope-item.reactive-card-v9.is-reactive::after,
+.scope-item.is-open.reactive-card-v9::after,
+.scope-item.scope-readable-v11.reactive-card-v9::after{
+  opacity:1!important;
+  display:block!important;
+  mix-blend-mode:normal!important;
+  background:
+    linear-gradient(90deg,
+      rgba(205,204,202,.97) 0%,
+      rgba(205,204,202,.94) 48%,
+      rgba(205,204,202,.90) 100%
+    )!important;
+}
+
+/* Przycisk plus w zakresie: bez przyciemniania, bez magnetycznego odskoku, tylko delikatny obrót po otwarciu. */
+.scope-item .scope-item__plus,
+.scope-item:hover .scope-item__plus,
+.scope-item.is-open .scope-item__plus,
+.scope-item.scope-readable-v11 .scope-item__plus{
+  background:rgba(241,240,237,.72)!important;
+  color:#424446!important;
+  border-color:rgba(80,81,83,.22)!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+
+.scope-item.is-open .scope-item__plus{
+  transform:rotate(45deg)!important;
+}
+
+/* Trigger i panel mają stabilne tło, bez animacji przygaszania. */
+.scope-item .scope-item__trigger,
+.scope-item:hover .scope-item__trigger,
+.scope-item.is-open .scope-item__trigger,
+.scope-item.scope-readable-v11 .scope-item__trigger{
+  background:transparent!important;
+}
+
+.scope-item.is-open .scope-item__trigger,
+.scope-item.scope-readable-v11 .scope-item__trigger{
+  border-bottom:1px solid rgba(66,68,70,.18)!important;
+}
+
+.scope-item .scope-item__panel,
+.scope-item.is-open .scope-item__panel,
+.scope-item.scope-readable-v11 .scope-item__panel{
+  background:#CDCCCA!important;
+  opacity:1!important;
+  filter:none!important;
+  backdrop-filter:none!important;
+}
+
+/* Tekst w zakresie zawsze pełny kontrast. */
+.scope-item .scope-item__main h3,
+.scope-item.is-open .scope-item__main h3,
+.scope-item.scope-readable-v11 .scope-item__main h3{
+  color:#3F4243!important;
+  opacity:1!important;
+  text-shadow:none!important;
+}
+
+.scope-item .scope-item__eyebrow,
+.scope-item .scope-item__meta,
+.scope-item .scope-item__number,
+.scope-item.is-open .scope-item__eyebrow,
+.scope-item.is-open .scope-item__meta,
+.scope-item.is-open .scope-item__number{
+  color:#505153!important;
+  opacity:1!important;
+}
+
+.scope-item .scope-item__content p,
+.scope-item .scope-item__content li,
+.scope-item.is-open .scope-item__content p,
+.scope-item.is-open .scope-item__content li{
+  color:#46484A!important;
+  opacity:1!important;
+  font-weight:500!important;
+}
