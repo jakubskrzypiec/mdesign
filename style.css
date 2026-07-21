@@ -851,3 +851,479 @@ body{
     gap:30px!important;
   }
 }
+
+
+/* ============================================================
+   V8 — PALETTE + REALIZACJE + SCOPE FIX
+   Tylko kolory z identyfikacji + normalny kierunek czytania.
+   ============================================================ */
+
+:root{
+  --bg:#CDCCCA!important;
+  --surface:#F1F0ED!important;
+  --surface-2:#E6E5E2!important;
+  --surface-3:#DAD9D6!important;
+  --ink:#505153!important;
+  --ink-strong:#424446!important;
+  --muted:#737578!important;
+  --muted-2:#8C8E90!important;
+  --accent:#737578!important;
+  --accent-deep:#5F6163!important;
+  --line:rgba(115,117,120,.18)!important;
+  --line-strong:rgba(115,117,120,.28)!important;
+  --warm:#CDCCCA!important;
+  --olive:#737578!important;
+  --olive-soft:#8C8E90!important;
+  --clay:#737578!important;
+  --cream:#F1F0ED!important;
+  --paper:#E6E5E2!important;
+  --header-h:62px!important;
+}
+
+body{
+  background:#CDCCCA!important;
+  color:#505153!important;
+}
+
+/* header ma być mały i spójny z paletą, bez mieszaniny kolorów */
+.site-header,
+.site-header:not(.is-scrolled),
+.site-header.is-scrolled{
+  height:62px!important;
+  background:rgba(205,204,202,.88)!important;
+  backdrop-filter:blur(18px)!important;
+  border-bottom:1px solid rgba(115,117,120,.16)!important;
+  box-shadow:none!important;
+}
+
+.header__inner{
+  height:62px!important;
+}
+
+.brand__logo{
+  height:27px!important;
+}
+
+.site-nav{
+  gap:24px!important;
+}
+
+.site-nav a,
+.site-header.is-scrolled .site-nav a{
+  color:#505153!important;
+  font-size:10px!important;
+  letter-spacing:.22em!important;
+}
+
+.social-links a,
+.site-header.is-scrolled .social-links a{
+  color:#505153!important;
+}
+
+.header__actions .button,
+.site-header.is-scrolled .button--ghost{
+  min-height:38px!important;
+  padding:0 18px!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.38)!important;
+  border:1px solid rgba(115,117,120,.22)!important;
+  color:#505153!important;
+}
+
+/* hero zostaje bez tekstu, same linki */
+.hero__copy,
+.hero__accent-note{
+  display:none!important;
+}
+
+.hero__content{
+  justify-content:flex-end!important;
+  padding:calc(var(--header-h) + 24px) 0 34px!important;
+}
+
+/* REALIZACJE — intro od lewej do prawej, bez prawych wielkich bloków */
+.projects-v7,
+.projects{
+  background:#E6E5E2!important;
+  padding-top:96px!important;
+}
+
+.projects__intro{
+  width:var(--container)!important;
+  display:block!important;
+  margin:0 auto 44px!important;
+  padding:0!important;
+}
+
+.projects__intro::after{
+  display:none!important;
+  content:none!important;
+}
+
+.projects__intro h2{
+  max-width:880px!important;
+  font-size:clamp(38px,5.6vw,86px)!important;
+  line-height:.98!important;
+  letter-spacing:-.035em!important;
+  text-align:left!important;
+  margin:0!important;
+}
+
+.projects__lead{
+  max-width:560px!important;
+  margin-top:22px!important;
+  color:#737578!important;
+  font-size:16px!important;
+  line-height:1.7!important;
+}
+
+/* realizacje bez miasta, bez badga, tekst normalnie z lewej */
+.project-showcase__meta{
+  display:none!important;
+}
+
+.project-showcase{
+  min-height:82svh!important;
+  width:min(100% - 28px, 1720px)!important;
+  margin:28px auto 0!important;
+  border-radius:30px!important;
+  box-shadow:0 28px 90px rgba(80,81,83,.12)!important;
+}
+
+.project-showcase::before{
+  filter:saturate(.95) brightness(.96) contrast(1.02)!important;
+  transform:scale(1.015)!important;
+}
+
+.project-showcase:hover::before{
+  transform:scale(1.045)!important;
+}
+
+.project-showcase__overlay{
+  background:
+    linear-gradient(90deg, rgba(28,30,31,.50) 0%, rgba(28,30,31,.15) 48%, rgba(28,30,31,.10) 100%),
+    linear-gradient(180deg, rgba(28,30,31,.02), rgba(28,30,31,.34))!important;
+}
+
+.project-showcase__content{
+  min-height:82svh!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-end!important;
+  align-items:flex-start!important;
+  padding:52px!important;
+  gap:16px!important;
+}
+
+.project-showcase__index{
+  position:static!important;
+  order:-1!important;
+  color:rgba(255,255,255,.66)!important;
+  margin-bottom:auto!important;
+}
+
+.project-showcase__content > div:nth-child(2){
+  max-width:760px!important;
+  align-self:flex-start!important;
+}
+
+.project-showcase__content h3{
+  max-width:12ch!important;
+  text-align:left!important;
+  font-size:clamp(36px,4.9vw,76px)!important;
+  line-height:.98!important;
+}
+
+.project-showcase__content p{
+  max-width:560px!important;
+  text-align:left!important;
+  font-size:16px!important;
+  line-height:1.7!important;
+  color:rgba(255,255,255,.80)!important;
+}
+
+/* ZAKRES — pełny pasek ze zdjęciem pod filtrem, ale czytelny i nie rozsypany */
+.scope-v7,
+.scope{
+  background:#CDCCCA!important;
+  padding-top:96px!important;
+  padding-bottom:96px!important;
+}
+
+.scope__heading{
+  width:var(--container)!important;
+  display:block!important;
+  margin:0 auto 42px!important;
+}
+
+.scope__heading h2{
+  max-width:780px!important;
+  font-size:clamp(38px,5.2vw,78px)!important;
+  line-height:1!important;
+  text-align:left!important;
+}
+
+.scope__heading p{
+  max-width:580px!important;
+  margin-top:18px!important;
+  color:#737578!important;
+  font-size:16px!important;
+  line-height:1.7!important;
+}
+
+.scope-list{
+  width:min(100% - 28px, 1720px)!important;
+  gap:18px!important;
+  margin-inline:auto!important;
+}
+
+.scope-item{
+  position:relative!important;
+  min-height:168px!important;
+  border-radius:26px!important;
+  overflow:hidden!important;
+  background:#E6E5E2!important;
+  border:1px solid rgba(115,117,120,.16)!important;
+  box-shadow:0 18px 70px rgba(80,81,83,.08)!important;
+}
+
+.scope-item::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  background-image:var(--scope-image)!important;
+  background-size:cover!important;
+  background-position:center!important;
+  filter:grayscale(1) saturate(.2) brightness(1.03) contrast(1.02)!important;
+  opacity:.44!important;
+  transform:scale(1.03)!important;
+  transition:transform .75s cubic-bezier(.16,.84,.22,1), opacity .35s ease!important;
+}
+
+.scope-item:hover::before{
+  transform:scale(1.055)!important;
+  opacity:.52!important;
+}
+
+.scope-item::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  background:
+    linear-gradient(90deg, rgba(241,240,237,.94) 0%, rgba(241,240,237,.86) 46%, rgba(241,240,237,.72) 100%)!important;
+}
+
+.scope-item__trigger{
+  position:relative!important;
+  z-index:2!important;
+  min-height:168px!important;
+  width:100%!important;
+  display:grid!important;
+  grid-template-columns:54px minmax(0,1fr) minmax(220px,330px) 46px!important;
+  gap:28px!important;
+  align-items:center!important;
+  padding:26px 34px!important;
+}
+
+.scope-item__visual{
+  display:none!important;
+}
+
+.scope-item__number{
+  color:#737578!important;
+}
+
+.scope-item__main{
+  display:block!important;
+}
+
+.scope-item__eyebrow{
+  color:#737578!important;
+  margin-bottom:10px!important;
+  font-size:10px!important;
+  letter-spacing:.24em!important;
+}
+
+.scope-item__main h3{
+  max-width:none!important;
+  font-size:clamp(32px,3.6vw,58px)!important;
+  line-height:1.02!important;
+  text-align:left!important;
+  color:#505153!important;
+}
+
+.scope-item__meta{
+  display:block!important;
+  max-width:260px!important;
+  justify-self:start!important;
+  text-align:left!important;
+  color:#737578!important;
+  font-size:10px!important;
+  letter-spacing:.22em!important;
+  line-height:1.8!important;
+}
+
+.scope-item__plus{
+  width:42px!important;
+  height:42px!important;
+  background:rgba(255,255,255,.54)!important;
+  color:#505153!important;
+  border:1px solid rgba(115,117,120,.22)!important;
+  backdrop-filter:blur(10px)!important;
+}
+
+.scope-item__panel{
+  position:relative!important;
+  z-index:2!important;
+  background:rgba(241,240,237,.82)!important;
+  border-top:1px solid rgba(115,117,120,.12)!important;
+}
+
+.scope-item__content{
+  padding:22px 34px 30px 116px!important;
+  max-width:900px!important;
+}
+
+.scope-item__content p,
+.scope-item__content li{
+  color:#67696A!important;
+}
+
+/* USUNIĘCIE DODATKOWYCH CIEPŁYCH/OLIWKOWYCH AKCENTÓW Z V7 */
+.projects-v7,
+.scope-v7,
+.contact-v7{
+  background-image:none!important;
+}
+
+/* mała przebitka podejście: nadal poziomo, bez gigantycznego pionowego bloku */
+.manifest-v7{
+  background:#E6E5E2!important;
+  padding:52px 0!important;
+}
+
+.manifest-v7 .manifest__content{
+  width:var(--container)!important;
+  display:grid!important;
+  grid-template-columns:minmax(280px,.85fr) minmax(320px,1fr)!important;
+  gap:34px!important;
+  align-items:center!important;
+  margin-inline:auto!important;
+}
+
+.manifest-v7 h2{
+  max-width:none!important;
+  font-size:clamp(28px,3.7vw,54px)!important;
+  line-height:1.04!important;
+  text-align:left!important;
+}
+
+.manifest-v7 p{
+  max-width:600px!important;
+  font-size:16px!important;
+  line-height:1.75!important;
+}
+
+/* social/faq i kontakt trzymane w palecie */
+.social-faq,
+.social-showcase,
+.faq,
+.contact,
+.contact-v7,
+.site-footer{
+  background:#E6E5E2!important;
+}
+
+.social-showcase,
+.faq,
+.contact-form,
+.contact__step{
+  border:1px solid rgba(115,117,120,.14)!important;
+  box-shadow:0 22px 70px rgba(80,81,83,.08)!important;
+}
+
+/* animacje premium, ale spokojne */
+.reveal{
+  transform:translateY(24px)!important;
+  filter:blur(6px)!important;
+  transition:
+    opacity .8s cubic-bezier(.16,.84,.22,1),
+    transform .8s cubic-bezier(.16,.84,.22,1),
+    filter .8s cubic-bezier(.16,.84,.22,1)!important;
+}
+.reveal.is-visible{
+  transform:none!important;
+  filter:blur(0)!important;
+}
+
+@media(max-width:1180px){
+  .scope-item__trigger{
+    grid-template-columns:44px minmax(0,1fr) 42px!important;
+  }
+  .scope-item__meta{
+    display:none!important;
+  }
+  .scope-item__content{
+    padding-left:96px!important;
+  }
+  .manifest-v7 .manifest__content{
+    grid-template-columns:1fr!important;
+  }
+}
+
+@media(max-width:760px){
+  :root{--header-h:58px!important;}
+  .site-header,
+  .site-header:not(.is-scrolled),
+  .site-header.is-scrolled,
+  .header__inner{
+    height:58px!important;
+  }
+  .brand__logo{
+    height:25px!important;
+  }
+  .projects-v7,
+  .scope-v7,
+  .scope{
+    padding-top:72px!important;
+    padding-bottom:72px!important;
+  }
+  .projects__intro h2,
+  .scope__heading h2{
+    font-size:clamp(32px,10vw,54px)!important;
+  }
+  .project-showcase{
+    min-height:64svh!important;
+    width:min(100% - 16px, 1720px)!important;
+    border-radius:22px!important;
+  }
+  .project-showcase__content{
+    min-height:64svh!important;
+    padding:24px 20px!important;
+  }
+  .project-showcase__content h3{
+    font-size:clamp(32px,10vw,56px)!important;
+  }
+  .scope-list{
+    width:min(100% - 16px, 1720px)!important;
+  }
+  .scope-item{
+    min-height:auto!important;
+    border-radius:22px!important;
+  }
+  .scope-item__trigger{
+    min-height:150px!important;
+    grid-template-columns:38px minmax(0,1fr) 38px!important;
+    gap:14px!important;
+    padding:22px 18px!important;
+  }
+  .scope-item__main h3{
+    font-size:clamp(28px,9vw,44px)!important;
+  }
+  .scope-item__content{
+    padding:18px 18px 24px 18px!important;
+  }
+  .manifest-v7{
+    padding:42px 0!important;
+  }
+}
