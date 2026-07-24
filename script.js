@@ -8,12 +8,21 @@ const scopeItems = document.querySelectorAll('[data-scope-item]');
 const faqItems = document.querySelectorAll('[data-faq-item]');
 const contactForm = document.getElementById('contactForm');
 const formNote = document.getElementById('formNote');
+const mobilePerformanceMode = window.matchMedia('(max-width: 980px), (pointer: coarse)').matches;
 
 function updateHeader() {
-  header.classList.toggle('is-scrolled', window.scrollY > 24);
+  header?.classList.toggle('is-scrolled', window.scrollY > 24);
 }
 updateHeader();
-window.addEventListener('scroll', updateHeader, { passive: true });
+let headerFramePending = false;
+window.addEventListener('scroll', () => {
+  if (headerFramePending) return;
+  headerFramePending = true;
+  window.requestAnimationFrame(() => {
+    updateHeader();
+    headerFramePending = false;
+  });
+}, { passive: true });
 
 if (menuToggle) {
   menuToggle.addEventListener('click', () => {
@@ -135,7 +144,7 @@ if (aboutRotatingText) {
 
 // V17 premium motion refinements
 const motionCardsV17 = document.querySelectorAll('.project-showcase, .scope-item');
-if (motionCardsV17.length) {
+if (motionCardsV17.length && !mobilePerformanceMode) {
   motionCardsV17.forEach((card) => {
     card.addEventListener('pointermove', (event) => {
       const rect = card.getBoundingClientRect();
@@ -156,8 +165,10 @@ const updatePremiumScrollV17 = () => {
   const y = window.scrollY || 0;
   document.documentElement.style.setProperty('--scroll-soft', Math.min(y / 900, 1).toFixed(3));
 };
-updatePremiumScrollV17();
-window.addEventListener('scroll', updatePremiumScrollV17, { passive: true });
+if (!mobilePerformanceMode) {
+  updatePremiumScrollV17();
+  window.addEventListener('scroll', updatePremiumScrollV17, { passive: true });
+}
 
 
 // ============================================================
@@ -168,11 +179,11 @@ window.addEventListener('scroll', updatePremiumScrollV17, { passive: true });
   const body = document.body;
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  body.classList.add('motion-v9');
-  if (prefersReduced) {
-    body.classList.add('motion-v9-ready');
+  if (prefersReduced || mobilePerformanceMode) {
+    body.classList.add('motion-v9-ready', 'performance-lite');
     return;
   }
+  body.classList.add('motion-v9');
 
   // Entry sequence
   requestAnimationFrame(() => {

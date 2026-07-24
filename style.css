@@ -673,7 +673,7 @@ body{
   padding:62px 0!important;
   background:
     linear-gradient(90deg, rgba(244,239,231,.92), rgba(244,239,231,.78)),
-    url('manifest-break.png') center/cover!important;
+    url('manifest-break.webp') center/cover!important;
 }
 .manifest-v7 .manifest__bg,
 .manifest-v7 .manifest__overlay{
@@ -3336,6 +3336,59 @@ body.intro-v11-active{
 
 /* Końcowa kolejność kaskady — te reguły nie mogą zostać nadpisane
    przez starsze warstwy kompatybilności znajdujące się wyżej. */
+@media(max-width:980px), (pointer:coarse){
+  html{
+    scroll-behavior:auto!important;
+  }
+
+  body.performance-lite .reveal,
+  body.performance-lite .motion-reveal-v9,
+  body.performance-lite .word-v9{
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+    transition:none!important;
+    animation:none!important;
+  }
+
+  .site-header,
+  .site-nav,
+  .scope-item__panel,
+  .social-showcase,
+  .faq,
+  .contact-form,
+  .contact__content{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+
+  .project-showcase,
+  .scope-item,
+  .social-showcase,
+  .faq,
+  .contact-form,
+  .about__media,
+  .project-showcase::before{
+    will-change:auto!important;
+  }
+
+  .project-showcase,
+  .scope-item,
+  .magnetic-v9,
+  .magnetic-v9.is-magnetic{
+    transform:none!important;
+  }
+
+  .project-showcase::before,
+  .project-showcase:hover::before,
+  .scope-item::before,
+  .scope-item:hover::before,
+  .magnetic-v9,
+  .magnetic-v9.is-magnetic{
+    transition:none!important;
+  }
+}
+
 .site-header .brand__logo--light{
   display:none!important;
 }
