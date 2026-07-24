@@ -31,12 +31,13 @@ if (menuToggle) {
 }
 
 let currentSlide = 0;
-if (heroSlides.length > 1) {
+const heroMotionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (heroSlides.length > 1 && !heroMotionReduced) {
   setInterval(() => {
     heroSlides[currentSlide].classList.remove('is-active');
     currentSlide = (currentSlide + 1) % heroSlides.length;
     heroSlides[currentSlide].classList.add('is-active');
-  }, 4800);
+  }, 5600);
 }
 
 const observer = new IntersectionObserver((entries) => {
@@ -61,6 +62,14 @@ function toggleAccordion(items, itemToOpen) {
     }
   });
 }
+
+// Każda harmonijka zaczyna zamknięta, również po powrocie z pamięci przeglądarki.
+[...scopeItems, ...faqItems].forEach(item => {
+  item.classList.remove('is-open');
+  item.querySelector('button')?.setAttribute('aria-expanded', 'false');
+  const panel = item.querySelector('.scope-item__panel, .faq-item__answer');
+  if (panel) panel.style.maxHeight = '0px';
+});
 
 scopeItems.forEach(item => {
   const panel = item.querySelector('.scope-item__panel');
