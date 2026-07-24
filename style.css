@@ -1046,6 +1046,331 @@ body{
   }
 }
 
+/* ============================================================
+   V27 — korekty treści i czytelności wskazanych sekcji
+   ============================================================ */
+
+.projects__intro{
+  display:flex!important;
+  align-items:flex-end!important;
+  justify-content:space-between!important;
+  gap:32px!important;
+}
+
+.projects__intro h2{
+  margin-top:12px!important;
+}
+
+.gallery-link{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:36px;
+  min-width:250px;
+  padding:14px 0;
+  border-bottom:1px solid rgba(66,68,70,.72);
+  color:#424446;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  transition:color .3s ease, border-color .3s ease;
+}
+
+.gallery-link::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:2px;
+  background:#424446;
+  transform:scaleX(0);
+  transform-origin:right;
+  transition:transform .4s cubic-bezier(.16,.84,.22,1);
+}
+
+.gallery-link:hover::after,
+.gallery-link:focus-visible::after{
+  transform:scaleX(1);
+  transform-origin:left;
+}
+
+.projects__gallery-outro{
+  display:flex;
+  justify-content:flex-end;
+  padding-top:38px;
+  padding-bottom:12px;
+}
+
+.scope__heading{
+  margin-bottom:32px!important;
+}
+
+.manifest__content{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  gap:22px!important;
+}
+
+.manifest__content h2{
+  width:min(100%,1050px)!important;
+  max-width:1050px!important;
+  margin:0!important;
+  text-align:left!important;
+}
+
+/* Cieńsze i spokojniejsze obudowy — więcej miejsca dla samych profili. */
+.devices.social-devices{
+  min-height:390px!important;
+  padding:20px 10px 14px!important;
+}
+
+.device--laptop{
+  width:min(96%,760px)!important;
+  padding:6px 6px 11px!important;
+  border:1px solid rgba(52,54,55,.72)!important;
+  border-radius:15px 15px 6px 6px!important;
+  background:linear-gradient(145deg,#4c4e4f 0%,#1c1d1e 72%)!important;
+  box-shadow:0 24px 46px rgba(26,27,27,.14), inset 0 1px rgba(255,255,255,.18)!important;
+}
+
+.device--laptop::before{
+  top:2px!important;
+  width:3px!important;
+  height:3px!important;
+  opacity:.6;
+}
+
+.device--laptop::after{
+  left:-2.2%!important;
+  right:-2.2%!important;
+  bottom:-9px!important;
+  height:10px!important;
+  background:linear-gradient(180deg,#6d6f70,#2b2c2d)!important;
+  box-shadow:0 7px 13px rgba(26,27,27,.12)!important;
+}
+
+.device--phone{
+  right:3%!important;
+  bottom:0!important;
+  width:min(27%,205px)!important;
+  padding:6px!important;
+  border:1px solid rgba(52,54,55,.78)!important;
+  border-radius:34px!important;
+  background:linear-gradient(145deg,#555758 0%,#171819 70%)!important;
+  box-shadow:0 20px 40px rgba(26,27,27,.16), inset 0 1px rgba(255,255,255,.2)!important;
+}
+
+.device--phone::before{
+  top:10px!important;
+  height:9px!important;
+}
+
+.device--phone::after{
+  bottom:10px!important;
+  height:3px!important;
+}
+
+.device--phone .device__screen{
+  border-radius:28px!important;
+}
+
+.social-screen{
+  filter:saturate(.94) contrast(.97)!important;
+  image-rendering:auto;
+}
+
+@media(max-width:760px){
+  .projects__intro{
+    align-items:flex-start!important;
+    flex-direction:column!important;
+    gap:24px!important;
+  }
+
+  .gallery-link{
+    width:100%;
+    min-width:0;
+  }
+
+  .projects__gallery-outro{
+    padding-top:28px;
+  }
+
+  .manifest-v7{
+    padding:48px 0!important;
+  }
+
+  .manifest__content{
+    gap:16px!important;
+  }
+
+  .devices.social-devices{
+    min-height:260px!important;
+    padding:12px 0 8px!important;
+  }
+
+  .device--laptop{
+    width:96%!important;
+    padding:4px 4px 8px!important;
+    border-radius:10px 10px 4px 4px!important;
+  }
+
+  .device--phone{
+    right:1%!important;
+    width:35%!important;
+    padding:4px!important;
+    border-radius:24px!important;
+  }
+
+  .device--phone .device__screen{
+    border-radius:19px!important;
+  }
+}
+
+/* Podstrona pełnej galerii. */
+.gallery-page{
+  background:#e6e5e2!important;
+}
+
+.gallery-page .site-header{
+  position:fixed;
+}
+
+.gallery-hero{
+  padding:calc(var(--header-h) + 110px) 0 76px;
+  background:#cdccca;
+  border-bottom:1px solid rgba(80,81,83,.16);
+}
+
+.gallery-hero__content{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:end;
+  gap:28px;
+}
+
+.gallery-hero__content .section-kicker{
+  grid-column:1 / -1;
+}
+
+.gallery-hero h1{
+  max-width:10ch;
+  color:#424446;
+  font-size:clamp(52px,8.2vw,132px);
+  line-height:.9;
+  letter-spacing:-.045em;
+}
+
+.gallery-back{
+  padding-bottom:12px;
+  border-bottom:1px solid rgba(66,68,70,.6);
+  color:#424446;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+.gallery-grid-section{
+  padding:36px 0 100px;
+}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:24px;
+}
+
+.gallery-card{
+  position:relative;
+  min-height:62svh;
+  overflow:hidden;
+  border-radius:24px;
+  background:#d5d3cf;
+}
+
+.gallery-card--wide{
+  grid-column:1 / -1;
+  min-height:78svh;
+}
+
+.gallery-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .8s cubic-bezier(.16,.84,.22,1),filter .5s ease;
+}
+
+.gallery-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 58%,rgba(18,19,19,.46));
+  pointer-events:none;
+}
+
+.gallery-card figcaption{
+  position:absolute;
+  z-index:2;
+  left:28px;
+  right:28px;
+  bottom:26px;
+  max-width:30ch;
+  color:#fff;
+  font-family:"Cinzel",serif;
+  font-size:clamp(22px,2.3vw,38px);
+  line-height:1.05;
+}
+
+.gallery-card:hover img{
+  transform:scale(1.025);
+  filter:saturate(1.03);
+}
+
+@media(max-width:760px){
+  .gallery-hero{
+    padding:calc(var(--header-h) + 72px) 0 48px;
+  }
+
+  .gallery-hero__content{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-hero h1{
+    font-size:clamp(48px,15vw,76px);
+  }
+
+  .gallery-back{
+    width:max-content;
+  }
+
+  .gallery-grid-section{
+    padding:16px 0 64px;
+  }
+
+  .gallery-grid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .gallery-card,
+  .gallery-card--wide{
+    grid-column:auto;
+    min-height:56svh;
+    border-radius:18px;
+  }
+
+  .gallery-card figcaption{
+    left:20px;
+    right:20px;
+    bottom:20px;
+  }
+}
+
 
 /* ============================================================
    V8 — PALETTE + REALIZACJE + SCOPE FIX
