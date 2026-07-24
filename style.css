@@ -1046,6 +1046,319 @@ body{
   }
 }
 
+/* V28 FINAL OVERRIDES — zawsze ostatnia warstwa arkusza */
+.hero__slide,
+.hero__slide.is-active,
+.motion-v9 .hero__slide,
+.motion-v9.motion-v9-enter .hero__slide{
+  opacity:1!important;
+  animation:none!important;
+  transition:none!important;
+  transform:none!important;
+  clip-path:none!important;
+  filter:none!important;
+  background-position:center 46%!important;
+  will-change:auto!important;
+}
+
+.hero::after,
+.motion-v9 .hero::after{
+  display:none!important;
+  content:none!important;
+}
+
+.reactive-card-v9,
+.reactive-card-v9.is-reactive{
+  transform:none!important;
+  transition:none!important;
+  will-change:auto!important;
+}
+
+.reactive-card-v9::after,
+.reactive-card-v9.is-reactive::after{
+  display:none!important;
+  content:none!important;
+  opacity:0!important;
+  background:none!important;
+}
+
+.gallery-grid{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:24px!important;
+}
+
+.gallery-card,
+.gallery-card--wide{
+  grid-column:auto!important;
+  width:100%!important;
+  min-height:82svh!important;
+  border-radius:0!important;
+}
+
+.gallery-card::after,
+.gallery-card figcaption{
+  display:none!important;
+  content:none!important;
+}
+
+.gallery-card img,
+.gallery-card:hover img{
+  width:100%!important;
+  height:82svh!important;
+  object-fit:cover!important;
+  transform:none!important;
+  filter:none!important;
+  transition:none!important;
+}
+
+.faq .section-kicker,
+.faq .section-kicker--light,
+.manifest-v7 .section-kicker,
+.manifest-v7 .section-kicker--light{
+  color:#737578!important;
+  -webkit-text-fill-color:#737578!important;
+  opacity:1!important;
+}
+
+.manifest-v7 .manifest__content,
+.manifest__content{
+  width:var(--container)!important;
+  display:block!important;
+  margin-inline:auto!important;
+  padding:0!important;
+  text-align:left!important;
+}
+
+.manifest-v7 .manifest__content .section-kicker{
+  display:inline-flex!important;
+  margin:0 0 22px!important;
+}
+
+.manifest-v7 .manifest__content h2,
+.manifest__content h2{
+  display:block!important;
+  width:min(100%,1120px)!important;
+  max-width:1120px!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:left!important;
+}
+
+.contact__grid{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  align-items:stretch!important;
+  gap:32px!important;
+}
+
+.contact__content,
+.contact-form{
+  height:100%!important;
+  box-sizing:border-box!important;
+}
+
+.contact__content{
+  display:flex!important;
+  flex-direction:column!important;
+  padding:34px!important;
+  border:1px solid rgba(115,117,120,.14)!important;
+  border-radius:34px!important;
+  background:rgba(255,255,255,.48)!important;
+  box-shadow:0 22px 70px rgba(80,81,83,.07)!important;
+}
+
+.contact__content h2{
+  max-width:12ch!important;
+}
+
+.contact__info{
+  margin-top:auto!important;
+  padding-top:26px!important;
+}
+
+@media(max-width:980px){
+  .gallery-card,
+  .gallery-card--wide,
+  .gallery-card img,
+  .gallery-card:hover img{
+    min-height:62svh!important;
+    height:62svh!important;
+  }
+
+  .contact__grid{
+    grid-template-columns:1fr!important;
+    gap:20px!important;
+  }
+
+  .contact__content{
+    padding:26px 20px!important;
+    border-radius:24px!important;
+  }
+}
+
+/* ============================================================
+   V28 — statyczne hero, czysta galeria i końcowe wyrównania
+   Ten blok celowo jest ostatni, żeby starsze warstwy go nie nadpisywały.
+   ============================================================ */
+
+/* Hero: jedno zdjęcie, bez zoomu, parallaxu, przejść i filtrów animowanych. */
+.hero__slide,
+.motion-v9 .hero__slide,
+.motion-v9.motion-v9-enter .hero__slide{
+  opacity:1!important;
+  animation:none!important;
+  transition:none!important;
+  transform:none!important;
+  clip-path:none!important;
+  filter:saturate(.92) contrast(1.04) brightness(.94)!important;
+  background-position:center 46%!important;
+  will-change:auto!important;
+}
+
+.hero::after,
+.motion-v9 .hero::after{
+  display:none!important;
+  content:none!important;
+}
+
+/* Usunięcie światła i przechylenia śledzącego kursor. */
+.reactive-card-v9,
+.reactive-card-v9.is-reactive{
+  transform:none!important;
+  transition:none!important;
+  will-change:auto!important;
+}
+
+.reactive-card-v9::after,
+.reactive-card-v9.is-reactive::after{
+  display:none!important;
+  content:none!important;
+  opacity:0!important;
+  background:none!important;
+}
+
+/* Pełna galeria: duże, spokojne kadry bez opisów i hoverów. */
+.gallery-grid{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:24px!important;
+}
+
+.gallery-card,
+.gallery-card--wide{
+  grid-column:auto!important;
+  width:100%!important;
+  min-height:82svh!important;
+  border-radius:0!important;
+  background:#d5d3cf!important;
+}
+
+.gallery-card::after{
+  display:none!important;
+  content:none!important;
+}
+
+.gallery-card img,
+.gallery-card:hover img{
+  width:100%!important;
+  height:82svh!important;
+  object-fit:cover!important;
+  transform:none!important;
+  filter:none!important;
+  transition:none!important;
+}
+
+.gallery-card figcaption{
+  display:none!important;
+}
+
+/* Widoczne szare etykiety na jasnym tle FAQ i Podejścia. */
+.faq .section-kicker,
+.faq .section-kicker--light,
+.manifest-v7 .section-kicker,
+.manifest-v7 .section-kicker--light{
+  color:#737578!important;
+  -webkit-text-fill-color:#737578!important;
+  opacity:1!important;
+}
+
+/* Podejście: cały blok konsekwentnie od lewej. */
+.manifest-v7 .manifest__content,
+.manifest__content{
+  width:var(--container)!important;
+  display:block!important;
+  margin-inline:auto!important;
+  padding:0!important;
+  text-align:left!important;
+}
+
+.manifest-v7 .manifest__content .section-kicker{
+  display:inline-flex!important;
+  margin:0 0 22px!important;
+}
+
+.manifest-v7 .manifest__content h2,
+.manifest__content h2{
+  display:block!important;
+  width:min(100%,1120px)!important;
+  max-width:1120px!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:left!important;
+}
+
+/* Kontakt: równe kolumny, wspólna górna i dolna linia. */
+.contact__grid{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  align-items:stretch!important;
+  gap:32px!important;
+}
+
+.contact__content,
+.contact-form{
+  height:100%!important;
+  box-sizing:border-box!important;
+}
+
+.contact__content{
+  display:flex!important;
+  flex-direction:column!important;
+  padding:34px!important;
+  border:1px solid rgba(115,117,120,.14)!important;
+  border-radius:34px!important;
+  background:rgba(255,255,255,.48)!important;
+  box-shadow:0 22px 70px rgba(80,81,83,.07)!important;
+}
+
+.contact__content h2{
+  max-width:12ch!important;
+}
+
+.contact__info{
+  margin-top:auto!important;
+  padding-top:26px!important;
+}
+
+@media(max-width:980px){
+  .gallery-card,
+  .gallery-card--wide,
+  .gallery-card img,
+  .gallery-card:hover img{
+    min-height:62svh!important;
+    height:62svh!important;
+  }
+
+  .contact__grid{
+    grid-template-columns:1fr!important;
+    gap:20px!important;
+  }
+
+  .contact__content{
+    padding:26px 20px!important;
+    border-radius:24px!important;
+  }
+}
+
 /* ============================================================
    V27 — korekty treści i czytelności wskazanych sekcji
    ============================================================ */
@@ -3035,14 +3348,18 @@ body.intro-v11-active{
   filter:contrast(1.28) brightness(.72)!important;
 }
 
-.hero__slide{
-  opacity:0!important;
-  animation:heroDriftFinal 16s ease-in-out infinite alternate!important;
-  transition:opacity 1.45s ease!important;
-}
-
-.hero__slide.is-active{
+.hero__slide,
+.hero__slide.is-active,
+.motion-v9 .hero__slide,
+.motion-v9.motion-v9-enter .hero__slide{
   opacity:1!important;
+  animation:none!important;
+  transition:none!important;
+  transform:none!important;
+  clip-path:none!important;
+  filter:none!important;
+  background-position:center 46%!important;
+  will-change:auto!important;
 }
 
 .site-footer{
@@ -3061,5 +3378,140 @@ body.intro-v11-active{
   .hero__slide{
     animation:none!important;
     transition:none!important;
+  }
+}
+
+.hero::after,
+.motion-v9 .hero::after{
+  display:none!important;
+  content:none!important;
+}
+
+.reactive-card-v9,
+.reactive-card-v9.is-reactive{
+  transform:none!important;
+  transition:none!important;
+  will-change:auto!important;
+}
+
+.reactive-card-v9::after,
+.reactive-card-v9.is-reactive::after{
+  display:none!important;
+  content:none!important;
+  opacity:0!important;
+  background:none!important;
+}
+
+.gallery-grid{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:24px!important;
+}
+
+.gallery-card,
+.gallery-card--wide{
+  grid-column:auto!important;
+  width:100%!important;
+  min-height:82svh!important;
+  border-radius:0!important;
+}
+
+.gallery-card::after,
+.gallery-card figcaption{
+  display:none!important;
+  content:none!important;
+}
+
+.gallery-card img,
+.gallery-card:hover img{
+  width:100%!important;
+  height:82svh!important;
+  object-fit:cover!important;
+  transform:none!important;
+  filter:none!important;
+  transition:none!important;
+}
+
+.faq .section-kicker,
+.faq .section-kicker--light,
+.manifest-v7 .section-kicker,
+.manifest-v7 .section-kicker--light{
+  color:#737578!important;
+  -webkit-text-fill-color:#737578!important;
+  opacity:1!important;
+}
+
+.manifest-v7 .manifest__content,
+.manifest__content{
+  width:var(--container)!important;
+  display:block!important;
+  margin-inline:auto!important;
+  padding:0!important;
+  text-align:left!important;
+}
+
+.manifest-v7 .manifest__content .section-kicker{
+  display:inline-flex!important;
+  margin:0 0 22px!important;
+}
+
+.manifest-v7 .manifest__content h2,
+.manifest__content h2{
+  display:block!important;
+  width:min(100%,1120px)!important;
+  max-width:1120px!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:left!important;
+}
+
+.contact__grid{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  align-items:stretch!important;
+  gap:32px!important;
+}
+
+.contact__content,
+.contact-form{
+  height:100%!important;
+  box-sizing:border-box!important;
+}
+
+.contact__content{
+  display:flex!important;
+  flex-direction:column!important;
+  padding:34px!important;
+  border:1px solid rgba(115,117,120,.14)!important;
+  border-radius:34px!important;
+  background:rgba(255,255,255,.48)!important;
+  box-shadow:0 22px 70px rgba(80,81,83,.07)!important;
+}
+
+.contact__content h2{
+  max-width:12ch!important;
+}
+
+.contact__info{
+  margin-top:auto!important;
+  padding-top:26px!important;
+}
+
+@media(max-width:980px){
+  .gallery-card,
+  .gallery-card--wide,
+  .gallery-card img,
+  .gallery-card:hover img{
+    min-height:62svh!important;
+    height:62svh!important;
+  }
+
+  .contact__grid{
+    grid-template-columns:1fr!important;
+    gap:20px!important;
+  }
+
+  .contact__content{
+    padding:26px 20px!important;
+    border-radius:24px!important;
   }
 }

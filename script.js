@@ -255,32 +255,6 @@ window.addEventListener('scroll', updatePremiumScrollV17, { passive: true });
     }, { passive: true });
   });
 
-  // Premium tilt / light tracking on large cards
-  const reactiveCards = document.querySelectorAll('.project-showcase, .scope-item, .social-showcase, .faq, .contact-form, .about__media');
-
-  reactiveCards.forEach((card) => {
-    card.classList.add('reactive-card-v9');
-
-    card.addEventListener('pointermove', (event) => {
-      const rect = card.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width;
-      const y = (event.clientY - rect.top) / rect.height;
-      card.style.setProperty('--rx', `${(0.5 - y) * 2.2}deg`);
-      card.style.setProperty('--ry', `${(x - 0.5) * 2.8}deg`);
-      card.style.setProperty('--spot-x', `${x * 100}%`);
-      card.style.setProperty('--spot-y', `${y * 100}%`);
-      card.classList.add('is-reactive');
-    }, { passive: true });
-
-    card.addEventListener('pointerleave', () => {
-      card.classList.remove('is-reactive');
-      card.style.setProperty('--rx', '0deg');
-      card.style.setProperty('--ry', '0deg');
-      card.style.setProperty('--spot-x', '50%');
-      card.style.setProperty('--spot-y', '50%');
-    }, { passive: true });
-  });
-
   // Smooth image parallax inside project cards
   const projectCards = [...document.querySelectorAll('.project-showcase')];
 
