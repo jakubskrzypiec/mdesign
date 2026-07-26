@@ -3336,6 +3336,216 @@ body.intro-v11-active{
 
 /* Końcowa kolejność kaskady — te reguły nie mogą zostać nadpisane
    przez starsze warstwy kompatybilności znajdujące się wyżej. */
+@media(max-width:760px){
+  /* Prosty, stabilny pasek mobilny. */
+  body .site-header,
+  body .site-header:not(.is-scrolled),
+  body .site-header.is-scrolled,
+  body .header__inner{
+    height:64px!important;
+  }
+
+  body .site-header,
+  body .site-header:not(.is-scrolled),
+  body .site-header.is-scrolled{
+    background:#080909!important;
+    border-bottom:1px solid rgba(255,255,255,.12)!important;
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+    box-shadow:none!important;
+  }
+
+  body .header__inner{
+    width:calc(100% - 28px)!important;
+    padding:0!important;
+  }
+
+  body .site-header .brand__logo--light,
+  body .site-header:not(.is-scrolled) .brand__logo--light,
+  body .site-header.is-scrolled .brand__logo--light{
+    display:block!important;
+    width:auto!important;
+    height:34px!important;
+    opacity:1!important;
+    filter:none!important;
+  }
+
+  body .site-header .brand__logo--dark,
+  body .site-header:not(.is-scrolled) .brand__logo--dark,
+  body .site-header.is-scrolled .brand__logo--dark{
+    display:none!important;
+  }
+
+  body .menu-toggle{
+    width:44px!important;
+    height:44px!important;
+  }
+
+  body .menu-toggle span,
+  body .site-header.is-scrolled .menu-toggle span{
+    left:9px!important;
+    right:9px!important;
+    height:1px!important;
+    background:#f3f1ed!important;
+  }
+
+  body .site-nav{
+    top:64px!important;
+    left:12px!important;
+    right:12px!important;
+    width:auto!important;
+    padding:24px!important;
+    gap:18px!important;
+    border:1px solid rgba(255,255,255,.12)!important;
+    border-radius:0 0 20px 20px!important;
+    background:#111212!important;
+    box-shadow:0 20px 44px rgba(0,0,0,.22)!important;
+  }
+
+  body .site-nav a,
+  body .site-header.is-scrolled .site-nav a{
+    color:#f3f1ed!important;
+    font-size:12px!important;
+    line-height:1.4!important;
+    letter-spacing:.18em!important;
+  }
+
+  /* Galeria mobilna bez wymuszonych wysokości i poziomego overflow. */
+  body.gallery-page{
+    overflow-x:hidden!important;
+  }
+
+  body.gallery-page .gallery-hero{
+    padding:calc(64px + 52px) 0 42px!important;
+  }
+
+  body.gallery-page .gallery-hero__content{
+    width:calc(100% - 32px)!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:20px!important;
+  }
+
+  body.gallery-page .gallery-hero h1{
+    width:100%!important;
+    max-width:100%!important;
+    font-size:clamp(42px,13vw,66px)!important;
+    line-height:.94!important;
+    overflow-wrap:anywhere;
+  }
+
+  body.gallery-page .gallery-grid-section{
+    padding:12px 0 56px!important;
+  }
+
+  body.gallery-page .gallery-grid{
+    width:calc(100% - 24px)!important;
+    max-width:none!important;
+    margin-inline:auto!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:12px!important;
+  }
+
+  body.gallery-page .gallery-card,
+  body.gallery-page .gallery-card--wide{
+    grid-column:auto!important;
+    width:100%!important;
+    min-width:0!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:0!important;
+    border-radius:14px!important;
+    overflow:hidden!important;
+  }
+
+  body.gallery-page .gallery-card img,
+  body.gallery-page .gallery-card:hover img{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    object-fit:contain!important;
+  }
+
+  /* Jednolity, czysty sposób otwierania zakresu i FAQ. */
+  body .scope-list{
+    width:calc(100% - 20px)!important;
+    gap:10px!important;
+  }
+
+  body .scope-item{
+    min-height:0!important;
+    border-radius:16px!important;
+    overflow:hidden!important;
+  }
+
+  body .scope-item__trigger,
+  body .scope-item:hover .scope-item__trigger,
+  body .scope-item.is-open .scope-item__trigger{
+    min-height:112px!important;
+    grid-template-columns:28px minmax(0,1fr) 34px!important;
+    gap:12px!important;
+    padding:16px!important;
+    align-items:center!important;
+  }
+
+  body .scope-item__main h3{
+    font-size:clamp(25px,8vw,34px)!important;
+    line-height:1.02!important;
+  }
+
+  body .scope-item__eyebrow{
+    font-size:9px!important;
+    line-height:1.4!important;
+  }
+
+  body .scope-item__number{
+    font-size:10px!important;
+  }
+
+  body .scope-item__plus{
+    width:34px!important;
+    height:34px!important;
+  }
+
+  body .scope-item__panel,
+  body .faq-item__answer{
+    opacity:0!important;
+    transition:max-height .38s cubic-bezier(.16,.84,.22,1),opacity .22s ease!important;
+  }
+
+  body .scope-item.is-open .scope-item__panel,
+  body .faq-item.is-open .faq-item__answer{
+    opacity:1!important;
+  }
+
+  body .scope-item__content{
+    padding:16px 16px 22px 56px!important;
+  }
+
+  body .faq-item__trigger{
+    grid-template-columns:minmax(0,1fr) 34px!important;
+    gap:14px!important;
+    padding:17px 0!important;
+    font-size:17px!important;
+    line-height:1.35!important;
+    transform:none!important;
+  }
+
+  body .faq-item__icon{
+    width:34px!important;
+    height:34px!important;
+  }
+
+  body .faq-item__answer p{
+    padding:0 46px 20px 0!important;
+    font-size:14px!important;
+    line-height:1.65!important;
+  }
+}
+
 @media(max-width:980px), (pointer:coarse){
   html{
     scroll-behavior:auto!important;
