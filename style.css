@@ -1196,6 +1196,57 @@ body{
   }
 }
 
+
+/* ============================================================
+   V31 — rozbudowana galeria wizualizacji
+   Naturalne proporcje zdjęć, brak efektów i lekkie ładowanie.
+   ============================================================ */
+
+body.gallery-page .gallery-grid{
+  display:block!important;
+  columns:2;
+  column-gap:20px;
+}
+
+body.gallery-page .gallery-card,
+body.gallery-page .gallery-card--wide{
+  display:block;
+  width:100%!important;
+  min-height:0!important;
+  height:auto!important;
+  margin:0 0 20px;
+  overflow:hidden;
+  break-inside:avoid;
+  border-radius:0!important;
+  background:#d5d3cf!important;
+  content-visibility:auto;
+  contain-intrinsic-size:auto 680px;
+}
+
+body.gallery-page .gallery-card img,
+body.gallery-page .gallery-card:hover img{
+  display:block;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  object-fit:contain!important;
+  transform:none!important;
+  filter:none!important;
+  transition:none!important;
+}
+
+@media(max-width:760px){
+  body.gallery-page .gallery-grid{
+    columns:1;
+  }
+
+  body.gallery-page .gallery-card,
+  body.gallery-page .gallery-card--wide{
+    margin-bottom:14px;
+    contain-intrinsic-size:auto 520px;
+  }
+}
+
 /* ============================================================
    V28 — statyczne hero, czysta galeria i końcowe wyrównania
    Ten blok celowo jest ostatni, żeby starsze warstwy go nie nadpisywały.
