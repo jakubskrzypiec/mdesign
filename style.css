@@ -3909,3 +3909,111 @@ body.intro-v11-active{
     border-radius:24px!important;
   }
 }
+
+
+/* V34 — realizacje uporządkowane projektami */
+.gallery-hero__lead{
+  grid-column:1 / -1;
+  max-width:620px;
+  margin-top:4px;
+  color:rgba(66,68,70,.72);
+  font-size:15px;
+  line-height:1.75;
+}
+
+.gallery-projects{
+  display:grid;
+  gap:clamp(76px,10vw,150px);
+}
+
+.gallery-project{
+  display:grid;
+  gap:24px;
+}
+
+.gallery-project__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  padding-top:24px;
+  border-top:1px solid rgba(66,68,70,.22);
+}
+
+.gallery-project__head span{
+  color:#737578;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+
+.gallery-project__head h2{
+  margin:0;
+  color:#424446;
+  font-family:"Cinzel",serif;
+  font-size:clamp(30px,4.4vw,64px);
+  font-weight:500;
+  line-height:.98;
+  letter-spacing:-.035em;
+}
+
+.gallery-project__grid{
+  columns:2;
+  column-gap:20px;
+}
+
+body.gallery-page .gallery-project__grid .gallery-card,
+body.gallery-page .gallery-project__grid .gallery-card--wide{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:0 0 20px!important;
+  break-inside:avoid;
+  border-radius:0!important;
+  background:#d5d3cf!important;
+}
+
+body.gallery-page .gallery-project__grid .gallery-card img,
+body.gallery-page .gallery-project__grid .gallery-card:hover img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  object-fit:contain!important;
+  transform:none!important;
+  filter:none!important;
+}
+
+@media(max-width:760px){
+  .gallery-hero__lead{
+    font-size:14px;
+  }
+
+  .gallery-projects{
+    gap:72px;
+  }
+
+  .gallery-project{
+    gap:16px;
+  }
+
+  .gallery-project__head{
+    width:calc(100% - 24px)!important;
+    padding-top:18px;
+  }
+
+  .gallery-project__head h2{
+    font-size:clamp(28px,9vw,42px);
+  }
+
+  .gallery-project__grid{
+    width:calc(100% - 24px)!important;
+    columns:1;
+  }
+
+  body.gallery-page .gallery-project__grid .gallery-card,
+  body.gallery-page .gallery-project__grid .gallery-card--wide{
+    margin-bottom:12px!important;
+  }
+}
